@@ -1,0 +1,1672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="windowModality">
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1180</width>
+    <height>930</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_7">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Informations et coordonnées</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>270</y>
+         <width>501</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>8</x>
+          <y>21</y>
+          <width>481</width>
+          <height>178</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_7">
+           <property name="text">
+            <string>N° consultation du téléservice :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="NoGU"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Référence de l’exploitant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="ReferenceExploitant"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_9">
+           <property name="text">
+            <string>N° d’affaire du déclarant :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="NoAffaireDeclarant"/>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>Personne à contacter (déclarant)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="1">
+          <widget class="QLineEdit" name="Personne_Contacter"/>
+         </item>
+         <item row="4" column="0">
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>Date de réception de la déclaration :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="1">
+          <widget class="QDateEdit" name="dateReceptionDeclaration">
+           <property name="displayFormat">
+            <string>dd/MM/yyyy</string>
+           </property>
+           <property name="calendarPopup">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QLabel" name="label_11">
+           <property name="text">
+            <string>Commune principale des travaux :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QLineEdit" name="CommuneTravaux"/>
+         </item>
+         <item row="6" column="0">
+          <widget class="QLabel" name="label_48">
+           <property name="text">
+            <string>Adresse des travaux prévus :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="6" column="1">
+          <widget class="QLineEdit" name="AdresseTravaux"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_4">
+       <property name="geometry">
+        <rect>
+         <x>520</x>
+         <y>270</y>
+         <width>421</width>
+         <height>221</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Coordonnées de l’exploitant :</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>11</x>
+          <y>21</y>
+          <width>403</width>
+          <height>192</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_12">
+             <property name="font">
+              <font>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Raison sociale :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="RaisonSocialeExploitant"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QLabel" name="label_13">
+             <property name="text">
+              <string>Personne à contacter :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="ContactExploitant"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QLabel" name="label_14">
+             <property name="text">
+              <string>Numéro / Voie :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="NoVoieExploitant"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Lieu-dit / BP :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LieuditBPExploitant"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <widget class="QLabel" name="label_16">
+             <property name="text">
+              <string>Code Postal / Commune :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="CodePostalExploitant">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="CommuneExploitant">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <item>
+            <widget class="QLabel" name="label_17">
+             <property name="text">
+              <string>Téléphone :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="TelExploitant"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <item>
+            <widget class="QLabel" name="label_19">
+             <property name="text">
+              <string>Fax :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="FaxExploitant"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>331</width>
+         <height>250</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string/>
+       </property>
+       <widget class="QWidget" name="layoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>311</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QRadioButton" name="Recepisse_DT">
+           <property name="text">
+            <string>Récépissé de DT</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="Recepisse_DICT">
+           <property name="text">
+            <string>Récépissé de DICT</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="Recepisse_DC">
+           <property name="text">
+            <string>Récépissé de DT/DICT
+conjointe</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_2">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>10</y>
+         <width>591</width>
+         <height>250</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>Destinataire</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>501</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="font">
+              <font>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Dénomination :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="Denomination"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Complément d’adresse :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="ComplementAdresse"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>Numéro / Voie :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="NoVoie"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Lieu-dit / BP :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="LieuditBP"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>Code Postal / Commune :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="CodePostal">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="Commune">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Pays :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="Pays"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Réponse à la DICT</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>950</width>
+         <height>170</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Eléments généraux de réponse</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>912</width>
+          <height>132</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <widget class="QCheckBox" name="RepImpossible">
+             <property name="text">
+              <string>Les renseignements que vous avez fournis ne nous permettent pas de vous répondre. La déclaration est à renouveler. Précisez notamment :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="InfoPreciser">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_15">
+           <item>
+            <widget class="QCheckBox" name="PasConcerne">
+             <property name="text">
+              <string>Les réseaux/ouvrages que nous exploitons ne sont pas concernés au regard des informations fournies. Distance &gt; à :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="DistanceReseau">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="inputMethodHints">
+              <set>Qt::ImhDigitsOnly|Qt::ImhPreferUppercase</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_20">
+             <property name="text">
+              <string>m</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <widget class="QCheckBox" name="Concerne">
+             <property name="text">
+              <string>Il y a au moins un réseau/ouvrage concerné (voir liste jointe).</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_16">
+             <item>
+              <widget class="QLabel" name="label_21">
+               <property name="text">
+                <string>Catégorie de réseaux/ouvrages (voir liste des catégories au verso) :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="CategorieReseau1">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ouvrages considérés comme sensibles pour la sécurité &lt;/span&gt;&lt;span style=&quot; font-size:6pt; font-weight:600;&quot;&gt;(au sens du I de l’article R. 554-2 du code de l’environnement)&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;p&gt;HC : Canalisations de transport et canalisations minières contenant des hydrocarbures liquides ou liquéfiés ;&lt;/p&gt;&lt;p&gt;PC : Canalisations de transport et canalisations minières contenant des produits chimiques liquides ou gazeux ;&lt;/p&gt;&lt;p&gt;GA : Canalisations de transport, de distribution et canalisations minières contenant des gaz combustibles ;&lt;/p&gt;&lt;p&gt;CU : Canalisations de transport ou de distribution de vapeur d’eau, d’eau surchauffée, d’eau chaude, d’eau glacée, et de tout&lt;/p&gt;&lt;p&gt;fluide caloporteur ou frigorigène, et tuyauteries rattachées en raison de leur connexité à des installations classées pour la&lt;/p&gt;&lt;p&gt;protection de l’environnement ;&lt;/p&gt;&lt;p&gt;EL : Lignes électriques et réseaux d’éclairage public autres qu’en très basse tension (&amp;gt; 50 V en courant alternatif ou 120 V en&lt;/p&gt;&lt;p&gt;courant continu) et autres que les lignes électriques aériennes à basse tension et à conducteurs isolés ;&lt;/p&gt;&lt;p&gt;TR : Installations destinées à la circulation de véhicules de transport public ferroviaire ou guidé ;&lt;/p&gt;&lt;p&gt;DE : Canalisations de transport de déchets par dispositif pneumatique sous pression ou par aspiration ;&lt;/p&gt;&lt;p&gt;DI : Ouvrages conçus ou aménagés en vue de prévenir les inondations et les submersions&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Autres ouvrages* &lt;/span&gt;&lt;span style=&quot; font-size:6pt; font-weight:600;&quot;&gt;(au sens du II de l’article R. 554-2 du code de l’environnement)&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;p&gt;TL : Installations souterraines de communications électroniques, lignes électriques et réseaux d’éclairage public autres que ceux&lt;/p&gt;&lt;p&gt;définis à la ligne « EL » ci-dessus ;&lt;/p&gt;&lt;p&gt;EA : Canalisations souterraines de prélèvement et de distribution d’eau destinée à la consommation humaine, à l’alimentation en&lt;/p&gt;&lt;p&gt;eau industrielle ou à la protection contre l’incendie, en pression ou à écoulement libre, y compris les réservoirs d’eau&lt;/p&gt;&lt;p&gt;enterrés qui leur sont associés ;&lt;/p&gt;&lt;p&gt;EU : Canalisations souterraines d’assainissement, contenant des eaux usées domestiques ou industrielles ou des eaux pluviales.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;*Parmi les « autres ouvrages », certains peuvent être spécifiés par leur exploitant comme « sensibles », soit lors de l’enregistrement de l’ouvrage sur le&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;guichet unique, soit lors de la réponse à la DT. Les dispositions réglementaires relatives aux réseaux sensibles s’appliquent alors pleinement à ces&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;ouvrages.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string/>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>HC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>PC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>GA</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>CU</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EL</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TR</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DE</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DI</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TL</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EA</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EU</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="CategorieReseau2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ouvrages considérés comme sensibles pour la sécurité &lt;/span&gt;&lt;span style=&quot; font-size:6pt; font-weight:600;&quot;&gt;(au sens du I de l’article R. 554-2 du code de l’environnement)&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;p&gt;HC : Canalisations de transport et canalisations minières contenant des hydrocarbures liquides ou liquéfiés ;&lt;/p&gt;&lt;p&gt;PC : Canalisations de transport et canalisations minières contenant des produits chimiques liquides ou gazeux ;&lt;/p&gt;&lt;p&gt;GA : Canalisations de transport, de distribution et canalisations minières contenant des gaz combustibles ;&lt;/p&gt;&lt;p&gt;CU : Canalisations de transport ou de distribution de vapeur d’eau, d’eau surchauffée, d’eau chaude, d’eau glacée, et de tout&lt;/p&gt;&lt;p&gt;fluide caloporteur ou frigorigène, et tuyauteries rattachées en raison de leur connexité à des installations classées pour la&lt;/p&gt;&lt;p&gt;protection de l’environnement ;&lt;/p&gt;&lt;p&gt;EL : Lignes électriques et réseaux d’éclairage public autres qu’en très basse tension (&amp;gt; 50 V en courant alternatif ou 120 V en&lt;/p&gt;&lt;p&gt;courant continu) et autres que les lignes électriques aériennes à basse tension et à conducteurs isolés ;&lt;/p&gt;&lt;p&gt;TR : Installations destinées à la circulation de véhicules de transport public ferroviaire ou guidé ;&lt;/p&gt;&lt;p&gt;DE : Canalisations de transport de déchets par dispositif pneumatique sous pression ou par aspiration ;&lt;/p&gt;&lt;p&gt;DI : Ouvrages conçus ou aménagés en vue de prévenir les inondations et les submersions&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Autres ouvrages* &lt;/span&gt;&lt;span style=&quot; font-size:6pt; font-weight:600;&quot;&gt;(au sens du II de l’article R. 554-2 du code de l’environnement)&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;p&gt;TL : Installations souterraines de communications électroniques, lignes électriques et réseaux d’éclairage public autres que ceux&lt;/p&gt;&lt;p&gt;définis à la ligne « EL » ci-dessus ;&lt;/p&gt;&lt;p&gt;EA : Canalisations souterraines de prélèvement et de distribution d’eau destinée à la consommation humaine, à l’alimentation en&lt;/p&gt;&lt;p&gt;eau industrielle ou à la protection contre l’incendie, en pression ou à écoulement libre, y compris les réservoirs d’eau&lt;/p&gt;&lt;p&gt;enterrés qui leur sont associés ;&lt;/p&gt;&lt;p&gt;EU : Canalisations souterraines d’assainissement, contenant des eaux usées domestiques ou industrielles ou des eaux pluviales.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;*Parmi les « autres ouvrages », certains peuvent être spécifiés par leur exploitant comme « sensibles », soit lors de l’enregistrement de l’ouvrage sur le&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;guichet unique, soit lors de la réponse à la DT. Les dispositions réglementaires relatives aux réseaux sensibles s’appliquent alors pleinement à ces&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;ouvrages.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string/>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>HC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>PC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>GA</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>CU</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EL</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TR</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DE</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DI</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TL</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EA</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EU</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="CategorieReseau3">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Ouvrages considérés comme sensibles pour la sécurité &lt;/span&gt;&lt;span style=&quot; font-size:6pt; font-weight:600;&quot;&gt;(au sens du I de l’article R. 554-2 du code de l’environnement)&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;p&gt;HC : Canalisations de transport et canalisations minières contenant des hydrocarbures liquides ou liquéfiés ;&lt;/p&gt;&lt;p&gt;PC : Canalisations de transport et canalisations minières contenant des produits chimiques liquides ou gazeux ;&lt;/p&gt;&lt;p&gt;GA : Canalisations de transport, de distribution et canalisations minières contenant des gaz combustibles ;&lt;/p&gt;&lt;p&gt;CU : Canalisations de transport ou de distribution de vapeur d’eau, d’eau surchauffée, d’eau chaude, d’eau glacée, et de tout&lt;/p&gt;&lt;p&gt;fluide caloporteur ou frigorigène, et tuyauteries rattachées en raison de leur connexité à des installations classées pour la&lt;/p&gt;&lt;p&gt;protection de l’environnement ;&lt;/p&gt;&lt;p&gt;EL : Lignes électriques et réseaux d’éclairage public autres qu’en très basse tension (&amp;gt; 50 V en courant alternatif ou 120 V en&lt;/p&gt;&lt;p&gt;courant continu) et autres que les lignes électriques aériennes à basse tension et à conducteurs isolés ;&lt;/p&gt;&lt;p&gt;TR : Installations destinées à la circulation de véhicules de transport public ferroviaire ou guidé ;&lt;/p&gt;&lt;p&gt;DE : Canalisations de transport de déchets par dispositif pneumatique sous pression ou par aspiration ;&lt;/p&gt;&lt;p&gt;DI : Ouvrages conçus ou aménagés en vue de prévenir les inondations et les submersions&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Autres ouvrages* &lt;/span&gt;&lt;span style=&quot; font-size:6pt; font-weight:600;&quot;&gt;(au sens du II de l’article R. 554-2 du code de l’environnement)&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; :&lt;/span&gt;&lt;/p&gt;&lt;p&gt;TL : Installations souterraines de communications électroniques, lignes électriques et réseaux d’éclairage public autres que ceux&lt;/p&gt;&lt;p&gt;définis à la ligne « EL » ci-dessus ;&lt;/p&gt;&lt;p&gt;EA : Canalisations souterraines de prélèvement et de distribution d’eau destinée à la consommation humaine, à l’alimentation en&lt;/p&gt;&lt;p&gt;eau industrielle ou à la protection contre l’incendie, en pression ou à écoulement libre, y compris les réservoirs d’eau&lt;/p&gt;&lt;p&gt;enterrés qui leur sont associés ;&lt;/p&gt;&lt;p&gt;EU : Canalisations souterraines d’assainissement, contenant des eaux usées domestiques ou industrielles ou des eaux pluviales.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;*Parmi les « autres ouvrages », certains peuvent être spécifiés par leur exploitant comme « sensibles », soit lors de l’enregistrement de l’ouvrage sur le&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;guichet unique, soit lors de la réponse à la DT. Les dispositions réglementaires relatives aux réseaux sensibles s’appliquent alors pleinement à ces&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-style:italic;&quot;&gt;ouvrages.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <item>
+                <property name="text">
+                 <string/>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>HC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>PC</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>GA</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>CU</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EL</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TR</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DE</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>DI</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>TL</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EA</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>EU</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_7">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>350</y>
+         <width>1150</width>
+         <height>250</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Emplacement de nos réseaux / ouvrages</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>17</y>
+          <width>1138</width>
+          <height>217</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_20">
+         <item>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <item>
+              <widget class="QCheckBox" name="PlansJoints">
+               <property name="text">
+                <string>Les plans de localisation sont joints</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_31">
+               <property name="text">
+                <string>NB : La classe de précision A, B ou C
+figure dans les plans.</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="1">
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <item>
+              <widget class="QLabel" name="label_26">
+               <property name="text">
+                <string>Références :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Ref1">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Ref2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="2">
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <item>
+              <widget class="QLabel" name="label_27">
+               <property name="text">
+                <string>Echelle(1) :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Echelle1">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Echelle2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="3">
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <item>
+              <widget class="QLabel" name="label_28">
+               <property name="text">
+                <string>Date d’édition(1) :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="EditionPlan1">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="displayFormat">
+                <string>dd/MM/yyyy</string>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QDateEdit" name="EditionPlan2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="displayFormat">
+                <string>dd/MM/yyyy</string>
+               </property>
+               <property name="calendarPopup">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="4">
+            <layout class="QVBoxLayout" name="verticalLayout_11">
+             <item>
+              <widget class="QLabel" name="label_29">
+               <property name="text">
+                <string>Sensible :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="Sensible1">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="Sensible2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="5">
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <item>
+              <widget class="QLabel" name="label_30">
+               <property name="text">
+                <string>Profondeur mini :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Profondeur1">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Profondeur2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="6">
+            <layout class="QVBoxLayout" name="verticalLayout_19">
+             <item>
+              <widget class="QLabel" name="label_49">
+               <property name="text">
+                <string>Matériau réseau(1)</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Materiau1">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Materiau2">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <widget class="QCheckBox" name="ReunionChantierCase">
+             <property name="text">
+              <string>Réunion sur chantier pour réaliser la localisation du réseau/ouvrage :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QCheckBox" name="DateRDV">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string> Date retenue d’un commun accord :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QDateTimeEdit" name="Reunion">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="displayFormat">
+              <string>dd/MM/yyyy HH:mm</string>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_32">
+             <property name="text">
+              <string>ou</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QCheckBox" name="RDVparDeclarant">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Prise de RDV à l’initiative du déclarant (date du dernier contact non conclusif :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QDateEdit" name="AppelNonConcl">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="displayFormat">
+              <string>dd/MM/yyyy</string>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="ServitudeCase">
+           <property name="text">
+            <string>Votre projet doit tenir compte de la servitude protégeant notre ouvrage.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="PasClasseACase">
+           <property name="text">
+            <string>(cas d’un récépissé de DT) Les plans de localisation ne sont pas en totalité de classe A : investigations complémentaires ou clauses particulières au marché à prévoir.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="BranchementsCase">
+           <property name="text">
+            <string>Les branchements situés dans l’emprise du projet et pourvus d’affleurant sont tous rattachés à un réseau principal souterrain identifié dans les plans joints.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_50">
+           <property name="font">
+            <font>
+             <pointsize>7</pointsize>
+             <italic>true</italic>
+            </font>
+           </property>
+           <property name="text">
+            <string>(1) : facultatif si l’information est fournie sur le plan joint</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>190</y>
+         <width>950</width>
+         <height>160</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Modification ou extension de nos réseaux / ouvrages</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>931</width>
+          <height>120</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_7">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_17">
+           <item>
+            <widget class="QLabel" name="label_22">
+             <property name="text">
+              <string>Modification ou extension de réseau/ouvrage envisagée dans un délai inférieur à 3 mois :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="ModifPrevue"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="ModifEnCours">
+           <property name="text">
+            <string>Réalisation de modifications en cours sur notre réseau/ouvrage.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_19">
+           <item>
+            <widget class="QLabel" name="label_23">
+             <property name="text">
+              <string>Veuillez contacter notre représentant :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="RepresentantExploitant">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_18">
+           <item>
+            <widget class="QLabel" name="label_24">
+             <property name="text">
+              <string>Tél. :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="TelModification">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_25">
+           <property name="font">
+            <font>
+             <pointsize>6</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>NB : Si nous avons connaissance d’une modification du réseau/ouvrage dans le délai maximal de 3 mois à compter de la consultation du téléservice, nous vous en informerons.</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Sécurité et signature</string>
+      </attribute>
+      <widget class="QGroupBox" name="groupBox_12">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>380</y>
+         <width>451</width>
+         <height>130</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Signataire</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_8">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>421</width>
+          <height>100</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_29">
+           <item>
+            <widget class="QLabel" name="label_44">
+             <property name="text">
+              <string>Nom :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="NomSignataire"/>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_28">
+           <item>
+            <widget class="QLabel" name="label_45">
+             <property name="text">
+              <string>Signature :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="signSignataire"/>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_46">
+             <property name="text">
+              <string>Date :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_47">
+             <property name="text">
+              <string>Nbre de pièces jointes, y compris les plans :</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="NbPJ"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QDateEdit" name="Recepisse">
+             <property name="displayFormat">
+              <string>dd/MM/yyyy</string>
+             </property>
+             <property name="calendarPopup">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_8">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>1071</width>
+         <height>250</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Recommandations de sécurité</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_9">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>1044</width>
+          <height>216</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_16">
+         <item>
+          <widget class="QLabel" name="label_33">
+           <property name="font">
+            <font>
+             <italic>true</italic>
+            </font>
+           </property>
+           <property name="text">
+            <string>Les recommandations techniques générales en fonction des réseaux et des techniques de travaux prévues sont consultables sur www.reseaux-et-canalisations.gouv.fr</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_14">
+           <item>
+            <widget class="QLabel" name="label_34">
+             <property name="text">
+              <string>Les recommandations techniques spécifiques suivantes sont à appliquer, en fonction des risques liés à l’utilisation des techniques de travaux employées :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="Recommandations"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_22">
+           <item>
+            <widget class="QLabel" name="label_35">
+             <property name="text">
+              <string>Rubriques du guide technique relatives à des ouvrages spécifiques :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="RubriquesGuide"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_21">
+           <item>
+            <widget class="QLabel" name="label_36">
+             <property name="text">
+              <string>Pour les exploitants de lignes électriques : si la distance d’approche a été précisée, indiquez si la mise hors tension est</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="Possible">
+             <property name="text">
+              <string>possible</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="Impossible">
+             <property name="text">
+              <string>impossible</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_15">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_23">
+             <item>
+              <widget class="QLabel" name="label_37">
+               <property name="text">
+                <string>Précisez les mesures de sécurité à mettre en oeuvre :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="MesuresSecurite"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="MesuresSecurite2"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_13">
+             <item>
+              <widget class="QLabel" name="label_51">
+               <property name="font">
+                <font>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Dispositifs importants pour la sécurité :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="DispositifsSecurite">
+               <item>
+                <property name="text">
+                 <string/>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Voir la liste des dispositifs en place dans le document joint</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Voir la localisation sur le plan joint</string>
+                </property>
+               </item>
+               <item>
+                <property name="text">
+                 <string>Aucun dans l'emprise</string>
+                </property>
+               </item>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_11">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>380</y>
+         <width>420</width>
+         <height>130</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Responsable du dossier</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_10">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>401</width>
+          <height>74</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_41">
+           <property name="text">
+            <string>Nom :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="NomResponsableDossier"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_42">
+           <property name="text">
+            <string>Désignation du service :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="DesignationService"/>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_43">
+           <property name="text">
+            <string>Tél. :</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QLineEdit" name="TelResponsableDossier"/>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QGroupBox" name="groupBox_10">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>270</y>
+         <width>1071</width>
+         <height>100</height>
+        </rect>
+       </property>
+       <property name="title">
+        <string>Cas de dégradation d’un de nos ouvrages</string>
+       </property>
+       <widget class="QWidget" name="layoutWidget_11">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>970</width>
+          <height>74</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_18">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_26">
+           <item>
+            <widget class="QLabel" name="label_38">
+             <property name="text">
+              <string>En cas de dégradation d’un de nos ouvrages, contactez nos services au numéro de téléphone suivant :</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="TelEndommagement"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_17">
+           <item>
+            <widget class="QLabel" name="label_39">
+             <property name="text">
+              <string>Pour toute anomalie susceptible de mettre en cause la sécurité au cours du déroulement du chantier, prévenir le service départemental d’incendie et de</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_25">
+             <item>
+              <widget class="QLabel" name="label_40">
+               <property name="text">
+                <string>secours (par défaut le 18 ou le 112) :</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="Endommagement"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>Recepisse_DT</tabstop>
+  <tabstop>Recepisse_DICT</tabstop>
+  <tabstop>Recepisse_DC</tabstop>
+  <tabstop>Denomination</tabstop>
+  <tabstop>ComplementAdresse</tabstop>
+  <tabstop>NoVoie</tabstop>
+  <tabstop>LieuditBP</tabstop>
+  <tabstop>CodePostal</tabstop>
+  <tabstop>Commune</tabstop>
+  <tabstop>Pays</tabstop>
+  <tabstop>NoGU</tabstop>
+  <tabstop>ReferenceExploitant</tabstop>
+  <tabstop>NoAffaireDeclarant</tabstop>
+  <tabstop>Personne_Contacter</tabstop>
+  <tabstop>dateReceptionDeclaration</tabstop>
+  <tabstop>CommuneTravaux</tabstop>
+  <tabstop>AdresseTravaux</tabstop>
+  <tabstop>RaisonSocialeExploitant</tabstop>
+  <tabstop>ContactExploitant</tabstop>
+  <tabstop>NoVoieExploitant</tabstop>
+  <tabstop>LieuditBPExploitant</tabstop>
+  <tabstop>CodePostalExploitant</tabstop>
+  <tabstop>CommuneExploitant</tabstop>
+  <tabstop>TelExploitant</tabstop>
+  <tabstop>FaxExploitant</tabstop>
+  <tabstop>RepImpossible</tabstop>
+  <tabstop>InfoPreciser</tabstop>
+  <tabstop>PasConcerne</tabstop>
+  <tabstop>Concerne</tabstop>
+  <tabstop>DistanceReseau</tabstop>
+  <tabstop>CategorieReseau1</tabstop>
+  <tabstop>CategorieReseau2</tabstop>
+  <tabstop>CategorieReseau3</tabstop>
+  <tabstop>ModifPrevue</tabstop>
+  <tabstop>ModifEnCours</tabstop>
+  <tabstop>RepresentantExploitant</tabstop>
+  <tabstop>TelModification</tabstop>
+  <tabstop>PlansJoints</tabstop>
+  <tabstop>Ref1</tabstop>
+  <tabstop>Echelle1</tabstop>
+  <tabstop>EditionPlan1</tabstop>
+  <tabstop>Sensible1</tabstop>
+  <tabstop>Profondeur1</tabstop>
+  <tabstop>Materiau1</tabstop>
+  <tabstop>Ref2</tabstop>
+  <tabstop>Echelle2</tabstop>
+  <tabstop>EditionPlan2</tabstop>
+  <tabstop>Sensible2</tabstop>
+  <tabstop>Profondeur2</tabstop>
+  <tabstop>Materiau2</tabstop>
+  <tabstop>ReunionChantierCase</tabstop>
+  <tabstop>DateRDV</tabstop>
+  <tabstop>Reunion</tabstop>
+  <tabstop>RDVparDeclarant</tabstop>
+  <tabstop>AppelNonConcl</tabstop>
+  <tabstop>ServitudeCase</tabstop>
+  <tabstop>PasClasseACase</tabstop>
+  <tabstop>BranchementsCase</tabstop>
+  <tabstop>Recommandations</tabstop>
+  <tabstop>RubriquesGuide</tabstop>
+  <tabstop>Possible</tabstop>
+  <tabstop>Impossible</tabstop>
+  <tabstop>MesuresSecurite</tabstop>
+  <tabstop>MesuresSecurite2</tabstop>
+  <tabstop>DispositifsSecurite</tabstop>
+  <tabstop>TelEndommagement</tabstop>
+  <tabstop>Endommagement</tabstop>
+  <tabstop>NomResponsableDossier</tabstop>
+  <tabstop>DesignationService</tabstop>
+  <tabstop>TelResponsableDossier</tabstop>
+  <tabstop>NomSignataire</tabstop>
+  <tabstop>signSignataire</tabstop>
+  <tabstop>Recepisse</tabstop>
+  <tabstop>NbPJ</tabstop>
+  <tabstop>buttonBox</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Dialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1000</x>
+     <y>905</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>464</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Dialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1000</x>
+     <y>905</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>464</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
