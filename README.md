@@ -4,6 +4,8 @@ Afin de répondre à certaines demandes en interne j'avais développé ce plugin
 
 Le développement a été abandonnée, mais va reprendre si le financement le permet. C'est à ce jour la seule solution opensource existante sur le marché.
 
+Pour toute demande vous pouvez me contacter par [mail](mailto:Loïc%20Bartoletti%20<loic.bartoletti@oslandia.com>?subject=[DICT]%20Demande%20pour%20le%20plugin).
+
 # Utilisation
 
 L'outil est composé de deux bouttons : un pour traiter un XML (à gauche) ![icon](icon.png) et un pour configurer le plugin (à droite) ![icon_configuration](icon_configuration.png).
