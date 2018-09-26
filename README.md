@@ -1,6 +1,13 @@
-Afin de répondre à certaines demandes en interne j'avais développé rapidement un plugin QGis pour traiter les XML des DT/DICT.
+# Introduction
 
-N'étant pas totalement satisfait du code je ne l'ai jamais mis publiquement à disposition.
-Toutefois, comme il a déjà circulé officieusement et qu'il peut répondre à certains besoins, je me décide à le rendre public.
+Afin de répondre à certaines demandes en interne j'avais développé ce plugin QGis pour traiter les XML des DT/DICT.
 
-Travaillant sur une autre solution et n'ayant pas le temps de le maintenir, il est livré en l'état (pas de commentaires, code empirique, bug?, etc.)
+Le développement a été abandonnée, mais va reprendre si le financement le permet. C'est à ce jour la seule solution opensource existante sur le marché.
+
+# Utilisation
+
+L'outil est composé de deux bouttons : un pour traiter un XML (à gauche) ![icon](icon.svg) et un pour configurer le plugin (à droite) ![icon_configuration](icon_configuration.svg).
+
+## Configuration
+La configuration permet à l’utilisateur de ne pas avoir à répéter la saisie des informations et indiquer où et comment doivent sortir les PDF.
+
