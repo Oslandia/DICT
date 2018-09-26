@@ -165,14 +165,15 @@ class DICT(object):
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_path = ':/plugins/DICT/icon.png'
+        icon_path = ':/plugins/DICT/icon.svg'
+        icon_configuration_path = ':/plugins/DICT/icon_configuration.svg'
         self.add_action(
             icon_path,
             text=self.tr(u'DICT'),
             callback=self.run,
             parent=self.iface.mainWindow())
         self.add_action(
-            icon_path,
+            icon_configuration_path,
             text=self.tr(u'DICT configuration'),
             callback=self.runConfig,
             parent=self.iface.mainWindow())

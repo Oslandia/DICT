@@ -26,24 +26,14 @@
 #Add iso code for any locales you want to support here (space separated)
 # default is no locales
 # LOCALES = af
-LOCALES = af
+#LOCALES = af
 
 # If locales are enabled, set the name of the lrelease binary on your system. If
 # you have trouble compiling the translations, you may have to specify the full path to
 # lrelease
-#LRELEASE = lrelease
-LRELEASE = lrelease-qt4
+#LRELEASE = /usr/local/lib/qt4/bin/lrelease
+#LRELEASE = lrelease-qt4
 
-
-# translation
-SOURCES = \
-	__init__.py \
-	DICT.py \
-	DICT_dialog.py \
-	DICT_dialog_config.py \
-	DICT_dialog_wizard.py \
-	DICT_dialog_composer.py \
-	DICT_geometrie.py
 
 PLUGINNAME = DICT
 
@@ -74,7 +64,7 @@ PEP8EXCLUDE=pydev,resources_rc.py,conf.py,third_party,ui
 # Normally you would not need to edit below here
 #################################################
 
-HELP = help/build/html
+# HELP = help/build/html
 
 PLUGIN_UPLOAD = $(c)/plugin_upload.py
 
@@ -92,7 +82,7 @@ compile: $(COMPILED_RESOURCE_FILES)
 %.qm : %.ts
 	$(LRELEASE) $<
 
-test: compile transcompile
+test: compile
 	@echo
 	@echo "----------------------"
 	@echo "Regression Test Suite"
@@ -110,7 +100,7 @@ test: compile transcompile
 	@echo "e.g. source run-env-linux.sh <path to qgis install>; make test"
 	@echo "----------------------"
 
-deploy: compile doc transcompile
+deploy: compile #doc
 	@echo
 	@echo "------------------------------------------"
 	@echo "Deploying plugin to your .qgis2 directory."
@@ -124,8 +114,7 @@ deploy: compile doc transcompile
 	cp -vf $(UI_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vf $(COMPILED_RESOURCE_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
 	cp -vf $(EXTRAS) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-	cp -vfr i18n $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-	cp -vfr $(HELP) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
+#	cp -vfr $(HELP) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
 
 # The dclean target removes compiled python files from plugin directory
 # also deletes any .git entry
@@ -134,7 +123,7 @@ dclean:
 	@echo "-----------------------------------"
 	@echo "Removing any compiled python files."
 	@echo "-----------------------------------"
-	find $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME) -iname "*.pyc" -delete
+	find $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME) -iname "*.pyc" | xargs rm -f
 	find $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME) -iname ".git" -prune -exec rm -Rf {} \;
 
 
@@ -175,29 +164,6 @@ upload: zip
 	@echo "Uploading plugin to QGIS Plugin repo."
 	@echo "-------------------------------------"
 	$(PLUGIN_UPLOAD) $(PLUGINNAME).zip
-
-transup:
-	@echo
-	@echo "------------------------------------------------"
-	@echo "Updating translation files with any new strings."
-	@echo "------------------------------------------------"
-	@chmod +x scripts/update-strings.sh
-	@scripts/update-strings.sh $(LOCALES)
-
-transcompile:
-	@echo
-	@echo "----------------------------------------"
-	@echo "Compiled translation files to .qm files."
-	@echo "----------------------------------------"
-	@chmod +x scripts/compile-strings.sh
-	@scripts/compile-strings.sh $(LRELEASE) $(LOCALES)
-
-transclean:
-	@echo
-	@echo "------------------------------------"
-	@echo "Removing compiled translation files."
-	@echo "------------------------------------"
-	rm -f i18n/*.qm
 
 clean:
 	@echo

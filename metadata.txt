@@ -22,11 +22,11 @@ email=lbartoletti@tuxfamily.org
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=
+tags=DT,DICT,travaux,construire,france
 
-homepage=
-tracker=
-repository=
+homepage=https://gitlab.com/lbartoletti/DICT
+tracker=https://gitlab.com/lbartoletti/DICT/issues
+repository=https://gitlab.com/lbartoletti/DICT
 category=Plugins
 icon=icon.png
 # experimental flag

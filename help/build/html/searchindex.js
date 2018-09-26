@@ -1,1 +1,0 @@
-Search.setIndex({envversion:46,filenames:["index"],objects:{},objnames:{},objtypes:{},terms:{Content:0,Index:0,Modul:0,Page:0,Search:0},titles:["Welcome to DICT&#8217;s documentation!"],titleterms:{"":0,DICT:0,Indice:0,Welcom:0,document:0,tabl:0}})
