@@ -55,6 +55,7 @@ class DICT_xml(object):
                   u'schema-teleservice/'
         rc1 = rc_base + '2.1'
         rc2 = rc_base + '2.2'
+        rc3 = rc_base + '3.0'
         gml = u'http://www.opengis.net/gml/3.2'
 
         l = []
@@ -66,6 +67,8 @@ class DICT_xml(object):
             rc = rc1
         elif rc2 in l:
             rc = rc2
+        elif rc3 in l:
+            rc = rc3
 
         gml_index = l.index(gml)-1
         rc_index = l.index(rc)-1
