@@ -23,14 +23,14 @@
 
 import os
 
-from PyQt4 import QtGui, uic, QtCore
+from qgis.PyQt import QtWidgets, uic, QtCore
 from qgis.utils import iface
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'DICT_dialog_composer.ui'))
 
 
-class DICTDialogComposer(QtGui.QDialog, FORM_CLASS):
+class DICTDialogComposer(QtWidgets.QDialog, FORM_CLASS):
     def __init__(self, taillePlan, parent=None):
         """Constructor."""
         super(DICTDialogComposer, self).__init__(parent)
@@ -46,8 +46,7 @@ class DICTDialogComposer(QtGui.QDialog, FORM_CLASS):
                         iface.activeComposers()]
         self.listComposers.addItems(compositions)
         self.listComposers.setSelectionMode(
-                QtGui.QAbstractItemView.ExtendedSelection)
-
+                QtWidgets.QAbstractItemView.ExtendedSelection)
         j = 0
         for i in compositions:
             if i.find(taillePlan) != -1:

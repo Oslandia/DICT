@@ -21,16 +21,17 @@
  ***************************************************************************/
 """
 
+from builtins import str
 import os
 
-from PyQt4 import QtGui, uic, QtCore
+from qgis.PyQt import QtWidgets, uic, QtCore
 from sys import platform as _platform
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'DICT_dialog_config.ui'))
 
 
-class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
+class DICTDialogConfig(QtWidgets.QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
         super(DICTDialogConfig, self).__init__(parent)
@@ -114,19 +115,19 @@ class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
         self.toolButtonPDFTK.pressed.connect(
             lambda: self.showDialogConfig(self.configPDFTK, "Executable"))
 
-        self.okButton = self.button_box.button(QtGui.QDialogButtonBox.Ok)
+        self.okButton = self.button_box.button(QtWidgets.QDialogButtonBox.Ok)
         self.okButton.clicked.connect(self.accept)
 
         self.cancelButton = self.button_box.button(
-                                QtGui.QDialogButtonBox.Cancel)
+                                QtWidgets.QDialogButtonBox.Cancel)
         self.cancelButton.clicked.connect(self.close)
 
     def showDialogConfig(self, obj, flags="Directory"):
         if flags == "Directory":
-            fname = str(QtGui.QFileDialog.getExistingDirectory(
+            fname = str(QtWidgets.QFileDialog.getExistingDirectory(
                             self, u"Choisissez un répertoire :"))
         elif flags == "Executable":
-            fname = str(QtGui.QFileDialog.getOpenFileName(
+            fname = str(QtWidgets.QFileDialog.getOpenFileName(
                             self, u"Choisissez l'exécutable :"))
         else:
             return
@@ -198,7 +199,7 @@ class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
                 txt = u"Poppler n'a pas été détecté sur votre système.\n"
                 txt += u"Le composeur QGis sera utilisé par défaut.\n"
 
-                QtGui.QMessageBox.warning(self,
+                QtWidgets.QMessageBox.warning(self,
                                           "Erreur de configuration poppler",
                                           txt)
 
@@ -212,4 +213,4 @@ class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
 
         self.close()
 
-        return QtGui.QDialog.Accepted
+        return QtWidgets.QDialog.Accepted

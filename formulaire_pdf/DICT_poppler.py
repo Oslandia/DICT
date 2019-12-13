@@ -4,14 +4,16 @@ Created on Wed May 25 13:26:46 2016
 
 @author: Loïc BARTOLETTI
 """
+from __future__ import print_function
+from builtins import str
 try:
     import popplerqt4
     POPPLER = True
 except:
     POPPLER = False
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from qgis.PyQt.QtWidgets import QDateTimeEdit, QCheckBox, QComboBox, QRadioButton
+from qgis.PyQt.QtCore import QSettings, QDir
 from ..DICT_dialog_wizard import DICTDialogWizard
 
 import os

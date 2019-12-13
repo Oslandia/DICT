@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
+from __future__ import absolute_import
+from builtins import str
+from builtins import object
 from xml.dom import minidom
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
-from DICT_geometrie import DICT_geometrie
-from DICT_dialog_wizard import DICTDialogWizard
+from qgis.PyQt.QtCore import QSettings, Qt
+from qgis.PyQt.QtWidgets import QMessageBox
+from .DICT_geometrie import DICT_geometrie
+from .DICT_dialog_wizard import DICTDialogWizard
 
 from dateutil import parser
 import tempfile
@@ -14,8 +17,8 @@ import sys
 import datetime
 import subprocess
 
-from formulaire_pdf.DICT_poppler import saveChangePoppler
-from formulaire_pdf.DICT_qgisComposer import saveChangeQGis
+from .formulaire_pdf.DICT_poppler import saveChangePoppler
+from .formulaire_pdf.DICT_qgisComposer import saveChangeQGis
 
 
 class DICT_xml(object):
@@ -59,7 +62,7 @@ class DICT_xml(object):
         gml = u'http://www.opengis.net/gml/3.2'
 
         l = []
-        for j in self._xmldoc.documentElement.attributes.items():
+        for j in list(self._xmldoc.documentElement.attributes.items()):
             l.append(j[0]), l.append(j[1])
 
         rc = None

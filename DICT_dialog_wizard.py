@@ -20,14 +20,16 @@
  *                                                                         *
  ***************************************************************************/
 """
+from builtins import str
 import os
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from PyQt4.QtXml import *
-from PyQt4 import uic
-from qgis.core import *
-from qgis.gui import *
+from qgis.PyQt.QtWidgets import QDialog, QDateEdit, QDateTimeEdit, QRadioButton, QCheckBox, QComboBox
+from qgis.PyQt.QtGui import QPainter
+from qgis.PyQt.QtPrintSupport import QPrinter
+from qgis.PyQt.QtCore import Qt, QDir, QSizeF, QSettings
+from qgis.PyQt.QtXml import QDomDocument
+from qgis.PyQt import uic
+from qgis.core import QgsLayout
 from qgis.utils import iface
 
 import tempfile
@@ -488,7 +490,7 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
         def formulaireQGis(titre, path):
             myMapRenderer = iface.mapCanvas().mapSettings()
             # Load template from file
-            myComposition = QgsComposition(myMapRenderer)
+            myComposition = QgsLayout(myMapRenderer)
             myTemplateFile = file(path, 'rt')
             myTemplateContent = myTemplateFile.read()
             myTemplateFile.close()

@@ -20,16 +20,18 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import (QSettings, QTranslator, qVersion,
-                          QCoreApplication, QDir, QFileInfo,
-                          QFile, Qt)
-from PyQt4.QtGui import QAction, QIcon, QMessageBox
+from __future__ import absolute_import
+from builtins import str
+from builtins import object
+from qgis.PyQt.QtCore import QSettings, QTranslator, qVersion, QCoreApplication, QDir, QFileInfo, QFile, Qt
+from qgis.PyQt.QtWidgets import QAction, QMessageBox
+from qgis.PyQt.QtGui import QIcon
 # Initialize Qt resources from file resources.py
-import resources_rc
+from . import resources_rc
 # Import the code for the dialog
-from DICT_dialog import DICTDialog
-from DICT_dialog_config import DICTDialogConfig
-from DICT_xml import DICT_xml
+from .DICT_dialog import DICTDialog
+from .DICT_dialog_config import DICTDialogConfig
+from .DICT_xml import DICT_xml
 
 import os.path
 

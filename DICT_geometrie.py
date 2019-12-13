@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from qgis.core import *
-from qgis.gui import *
+from __future__ import absolute_import
+from builtins import str
+from builtins import object
+from qgis.core import (QgsGeometry, QgsCoordinateTransform, QgsFeature,
+                       QgsFillSymbol, QgsVectorLayer, QgsProject)
 from qgis.utils import iface
-from PyQt4.QtCore import QSizeF, QSettings, QDir, Qt
-from PyQt4.QtGui import QPrinter, QPainter, QMessageBox
-from DICT_dialog_composer import DICTDialogComposer
+from qgis.PyQt.QtCore import (QSizeF, QSettings, QDir, Qt)
+from qgis.PyQt.QtPrintSupport import QPrinter
+from qgis.PyQt.QtGui import QPainter
+from qgis.PyQt.QtWidgets import QMessageBox
+from .DICT_dialog_composer import DICTDialogComposer
 from math import ceil, pow
 
 
@@ -117,10 +122,10 @@ class DICT_geometrie(object):
         pr.addFeatures([f])
         mem_layer.commitChanges()
         mem_layer.updateExtents()
-        prop = mem_layer.rendererV2().symbol().symbolLayers()[0].properties()
+        prop = mem_layer.renderer().symbol().symbolLayers()[0].properties()
         prop['color'] = '255,0,0,20'
-        mem_layer.rendererV2().setSymbol(QgsFillSymbolV2.createSimple(prop))
-        QgsMapLayerRegistry.instance().addMapLayer(mem_layer)
+        mem_layer.renderer().setSymbol(QgsFillSymbol.createSimple(prop))
+        QgsProject.instance().addMapLayer(mem_layer)
 
         layerCRSSrsid = mem_layer.crs().srsid()
         mc = iface.mapCanvas()
@@ -130,7 +135,7 @@ class DICT_geometrie(object):
         if layerCRSSrsid != projectCRSSrsid:
             geomBB.transform(QgsCoordinateTransform(layerCRSSrsid,
                                                     projectCRSSrsid))
-        self._geomBB = geomBB.boundingBox()                                                        
+        self._geomBB = geomBB.boundingBox()
         mc.setExtent(self._geomBB)
 
     def geometriePDF(self, titre, taillePlan):

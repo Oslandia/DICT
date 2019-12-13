@@ -5,16 +5,18 @@ Created on Thu May 26 08:43:47 2016
 @author: Loïc BARTOLETTI
 """
 
+from builtins import str
 import codecs
 import os
 import shutil
 import tempfile
-from qgis.core import *
-from qgis.gui import *
+from qgis.core import QgsLayout
 from qgis.utils import iface
-from PyQt4.QtXml import *
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from qgis.PyQt.QtXml import QDomDocument
+from qgis.PyQt.QtWidgets import QDateTimeEdit, QRadioButton, QCheckBox, QComboBox
+from qgis.PyQt.QtGui import QPainter
+from qgis.PyQt.QtPrintSupport import QPrinter
+from qgis.PyQt.QtCore import Qt, QSettings, QSizeF, QDir
 from ..DICT_dialog_wizard import DICTDialogWizard
 
 
@@ -165,7 +167,7 @@ def saveChangeQGis(dlg):
 def formulaireQGis(titre, path):
     myMapRenderer = iface.mapCanvas().mapSettings()
     # Load template from file
-    myComposition = QgsComposition(myMapRenderer)
+    myComposition = QgsLayout(myMapRenderer)
     myTemplateFile = file(path, 'rt')
     myTemplateContent = myTemplateFile.read()
     myTemplateFile.close()
