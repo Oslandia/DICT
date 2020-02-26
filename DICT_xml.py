@@ -15,10 +15,6 @@ import sys
 import datetime
 import subprocess
 
-from .formulaire_pdf.DICT_poppler import saveChangePoppler
-from .formulaire_pdf.DICT_qgisComposer import saveChangeQGis
-
-
 class DICT_xml(object):
     def __init__(self, xml_file):
         msgBox = QMessageBox()
@@ -68,7 +64,7 @@ class DICT_xml(object):
         elif rc2 in l:
             rc = rc2
         elif rc3 in l:
-            rc = rc3        
+            rc = rc3
 
         gml_index = l.index(gml)-1
         rc_index = l.index(rc)-1
@@ -213,7 +209,7 @@ class DICT_xml(object):
         result = dlgWizard.exec_()
         if result and exportPDF:
             titre, pdf = None, None
-            if QSettings().value("/DICT/formPoppler") == "true":
+            if QSettings().value("/DICT/formPoppler") is True:
                 titre, pdf = dlgWizard.saveChangePoppler()
             else:
                 titre, pdf = dlgWizard.saveChangeQGis()

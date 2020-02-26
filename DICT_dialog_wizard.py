@@ -630,12 +630,12 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
                     id_f = i
                     break
             return id_f
-
         if POPPLER is False:
             return None, None
 
         path = os.path.join(os.path.dirname(__file__), "formulaire_pdf")
-        formulaire = os.path.join(path, 'cerfa_14435-03.pdf')
+        formulaire = os.path.join(path, 'cerfa_14435-04.pdf')
+
 
         doc = popplerqt5.Poppler.Document.load(formulaire)
 
@@ -649,7 +649,8 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
         # Change contenu lignes
         for i in self.line:
             if i[0].isEnabled():
-                fields[i[1]].setText(i[0].text())
+                id_f = findId(fields, i[0].objectName())
+                fields[id_f].setText(i[1])
 
         # Change contenu checkbox
         for i in self.findChildren(QCheckBox):
