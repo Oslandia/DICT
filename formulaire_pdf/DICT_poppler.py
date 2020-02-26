@@ -4,21 +4,19 @@ Created on Wed May 25 13:26:46 2016
 
 @author: Loïc BARTOLETTI
 """
-from __future__ import print_function
-from builtins import str
 try:
-    import popplerqt4
+    import popplerqt5
     POPPLER = True
 except:
     POPPLER = False
 
-from qgis.PyQt.QtWidgets import QDateTimeEdit, QCheckBox, QComboBox, QRadioButton
-from qgis.PyQt.QtCore import QSettings, QDir
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 from ..DICT_dialog_wizard import DICTDialogWizard
 
 import os
 
-# doc = popplerqt4.Poppler.Document.load('cerfa_14435-03.pdf')
+# doc = popplerqt5.Poppler.Document.load('cerfa_14435-03.pdf')
 # page = doc.page(0)
 # fields = page.formFields()
 # Tous les ids du cerfa 14435-03 commencent par un increment à 65536
@@ -34,7 +32,7 @@ import os
 # (7, PyQt4.QtCore.QString(u'CodePostal'), 1),
 # (8, PyQt4.QtCore.QString(u'Commune'), 1),
 # (9, PyQt4.QtCore.QString(u'Pays'), 1),
-# (10, PyQt4.QtCore.QString(u'NoGU'), 1),
+# (10, PyQt4.QtCore.QString(u'NoGu'), 1),
 # (11, PyQt4.QtCore.QString(u'ReferenceExploitant'), 1),
 # (12, PyQt4.QtCore.QString(u'NoAffaireDeclarant'), 1),
 # (13, PyQt4.QtCore.QString(u'Personne_Contacter'), 1),
@@ -133,7 +131,7 @@ def saveChangePoppler(dlg):
         [dlg.CodePostal,                7],
         [dlg.Commune,                   8],
         [dlg.Pays,                      9],
-        [dlg.NoGU,                      10],
+        [dlg.NoGu,                      10],
         [dlg.ReferenceExploitant,       11],
         [dlg.NoAffaireDeclarant,        12],
         [dlg.Personne_Contacter,        13],
@@ -178,7 +176,7 @@ def saveChangePoppler(dlg):
     formulaire = os.path.join(path, 'cerfa_14435-03.pdf')
     print(formulaire)
 
-    doc = popplerqt4.Poppler.Document.load(formulaire)
+    doc = popplerqt5.Poppler.Document.load(formulaire)
 
     try:
         page = doc.page(0)
@@ -290,13 +288,13 @@ def saveChangePoppler(dlg):
     if QDir(out_dir).exists() is False or out_dir is None:
         out_dir = str(QDir.homePath())
 
-    out = os.path.join(out_dir, QSettings().value("/DICT/prefRecep", u"") +
-                       titre + QSettings().value("/DICT/sufRecep", u"") +
+    out = os.path.join(out_dir, QSettings().value("/DICT/prefRecep", "") +
+                       titre + QSettings().value("/DICT/sufRecep", "") +
                        ".pdf")
 
     pdf = doc.pdfConverter()
     pdf.setOutputFileName(out)
-    pdf.setPDFOptions(popplerqt4.Poppler.PDFConverter.WithChanges)
+    pdf.setPDFOptions(popplerqt5.Poppler.PDFConverter.WithChanges)
     pdf.convert()
 
     return titre, out

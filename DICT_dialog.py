@@ -23,7 +23,7 @@
 
 import os
 
-from qgis.PyQt import QtWidgets, uic, QtCore
+from PyQt5 import uic, QtCore, QtWidgets
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'DICT_dialog_base.ui'))
@@ -44,14 +44,13 @@ class DICTDialog(QtWidgets.QDialog, FORM_CLASS):
 
     def showDialog(self):
 
-        fname = QtWidgets.QFileDialog.getOpenFileName(
+        fname, _filter = QtWidgets.QFileDialog.getOpenFileName(
                 self, 'Open file',
-                QtCore.QSettings().value("/DICT/configRepXML",
-                                         QtCore.QDir.homePath()),
+                QtCore.QSettings().value("/DICT/configRepXML" + QtCore.QDir.homePath()),
                 "fichier XML (*.xml *.XML)")
 
         if fname:
-            f = open(fname, 'r')
+            f = open(fname, mode='r')
 
             with f:
                 self.lineEdit.setText(fname)

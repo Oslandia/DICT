@@ -5,69 +5,67 @@ Created on Thu May 26 08:43:47 2016
 @author: Loïc BARTOLETTI
 """
 
-from builtins import str
 import codecs
 import os
 import shutil
 import tempfile
-from qgis.core import QgsLayout
+from qgis.core import *
+from qgis.gui import *
 from qgis.utils import iface
-from qgis.PyQt.QtXml import QDomDocument
-from qgis.PyQt.QtWidgets import QDateTimeEdit, QRadioButton, QCheckBox, QComboBox
-from qgis.PyQt.QtGui import QPainter
-from qgis.PyQt.QtPrintSupport import QPrinter
-from qgis.PyQt.QtCore import Qt, QSettings, QSizeF, QDir
+from PyQt5.QtXml import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
 from ..DICT_dialog_wizard import DICTDialogWizard
 
 
 def saveChangeQGis(dlg):
     line = [
-        [dlg.Denomination,              u"dest_Denomination"],
-        [dlg.ComplementAdresse,         u"dest_ComplementAdresse"],
-        [dlg.NoVoie,                    u"dest_NoVoie"],
-        [dlg.LieuditBP,                 u"dest_LieuditBP"],
-        [dlg.CodePostal,                u"dest_CodePostal"],
-        [dlg.Commune,                   u"dest_Commune"],
-        [dlg.Pays,                      u"dest_Pays"],
-        [dlg.NoGU,                      u"NoGU"],
-        [dlg.ReferenceExploitant,       u"ReferenceExploitant"],
-        [dlg.NoAffaireDeclarant,        u"NoAffaireDeclarant"],
-        [dlg.Personne_Contacter,        u"Personne_Contacter"],
-        [dlg.CommuneTravaux,            u"CommuneTravaux"],
-        [dlg.AdresseTravaux,            u"AdresseTravaux"],
-        [dlg.RaisonSocialeExploitant,   u"RaisonSocialeExploitant"],
-        [dlg.ContactExploitant,         u"ContactExploitant"],
-        [dlg.NoVoieExploitant,          u"NoVoieExploitant"],
-        [dlg.LieuditBPExploitant,       u"LieuditBPExploitant"],
-        [dlg.CodePostalExploitant,      u"CodePostalExploitant"],
-        [dlg.CommuneExploitant,         u"CommuneExploitant"],
-        [dlg.TelExploitant,             u"TelExploitant"],
-        [dlg.FaxExploitant,             u"FaxExploitant"],
-        [dlg.InfoPreciser,              u"InfoPreciser"],
-        [dlg.DistanceReseau,            u"DistanceReseau"],
-        [dlg.ModifPrevue,               u"ModifPrevue"],
-        [dlg.RepresentantExploitant,    u"RepresentantExploitant"],
-        [dlg.TelModification,           u"TelModification"],
-        [dlg.Ref1,                      u"Ref1"],
-        [dlg.Ref2,                      u"Ref2"],
-        [dlg.Echelle1,                  u"Echelle1"],
-        [dlg.Echelle2,                  u"Echelle2"],
-        [dlg.Profondeur1,               u"Profondeur1"],
-        [dlg.Profondeur2,               u"Profondeur2"],
-        [dlg.Materiau1,                 u"Materiau1"],
-        [dlg.Materiau2,                 u"Materiau2"],
-        [dlg.Recommandations,           u"Recommandations"],
-        [dlg.RubriquesGuide,            u"RubriquesGuide"],
-        [dlg.MesuresSecurite2,          u"MesuresSecurite2"],
-        [dlg.MesuresSecurite,           u"MesuresSecurite"],
-        [dlg.TelEndommagement,          u"TelEndommagement"],
-        [dlg.Endommagement,             u"Endommagement"],
-        [dlg.NomResponsableDossier,     u"NomResponsableDossier"],
-        [dlg.DesignationService,        u"DesignationService"],
-        [dlg.TelResponsableDossier,     u"TelResponsableDossier"],
-        [dlg.NomSignataire,             u"NomSignataire"],
-        [dlg.signSignataire,            u"Signature"],
-        [dlg.NbPJ,                      u"NbPJ"]
+        [dlg.Denomination,              "dest_Denomination"],
+        [dlg.ComplementAdresse,         "dest_ComplementAdresse"],
+        [dlg.NoVoie,                    "dest_NoVoie"],
+        [dlg.LieuditBP,                 "dest_LieuditBP"],
+        [dlg.CodePostal,                "dest_CodePostal"],
+        [dlg.Commune,                   "dest_Commune"],
+        [dlg.Pays,                      "dest_Pays"],
+        [dlg.NoGu,                      "NoGu"],
+        [dlg.ReferenceExploitant,       "ReferenceExploitant"],
+        [dlg.NoAffaireDeclarant,        "NoAffaireDeclarant"],
+        [dlg.Personne_Contacter,        "Personne_Contacter"],
+        [dlg.CommuneTravaux,            "CommuneTravaux"],
+        [dlg.AdresseTravaux,            "AdresseTravaux"],
+        [dlg.RaisonSocialeExploitant,   "RaisonSocialeExploitant"],
+        [dlg.ContactExploitant,         "ContactExploitant"],
+        [dlg.NoVoieExploitant,          "NoVoieExploitant"],
+        [dlg.LieuditBPExploitant,       "LieuditBPExploitant"],
+        [dlg.CodePostalExploitant,      "CodePostalExploitant"],
+        [dlg.CommuneExploitant,         "CommuneExploitant"],
+        [dlg.TelExploitant,             "TelExploitant"],
+        [dlg.FaxExploitant,             "FaxExploitant"],
+        [dlg.InfoPreciser,              "InfoPreciser"],
+        [dlg.DistanceReseau,            "DistanceReseau"],
+        [dlg.ModifPrevue,               "ModifPrevue"],
+        [dlg.RepresentantExploitant,    "RepresentantExploitant"],
+        [dlg.TelModification,           "TelModification"],
+        [dlg.Ref1,                      "Ref1"],
+        [dlg.Ref2,                      "Ref2"],
+        [dlg.Echelle1,                  "Echelle1"],
+        [dlg.Echelle2,                  "Echelle2"],
+        [dlg.Profondeur1,               "Profondeur1"],
+        [dlg.Profondeur2,               "Profondeur2"],
+        [dlg.Materiau1,                 "Materiau1"],
+        [dlg.Materiau2,                 "Materiau2"],
+        [dlg.Recommandations,           "Recommandations"],
+        [dlg.RubriquesGuide,            "RubriquesGuide"],
+        [dlg.MesuresSecurite2,          "MesuresSecurite2"],
+        [dlg.MesuresSecurite,           "MesuresSecurite"],
+        [dlg.TelEndommagement,          "TelEndommagement"],
+        [dlg.Endommagement,             "Endommagement"],
+        [dlg.NomResponsableDossier,     "NomResponsableDossier"],
+        [dlg.DesignationService,        "DesignationService"],
+        [dlg.TelResponsableDossier,     "TelResponsableDossier"],
+        [dlg.NomSignataire,             "NomSignataire"],
+        [dlg.signSignataire,            "Signature"],
+        [dlg.NbPJ,                      "NbPJ"]
     ]
 
     path = os.path.dirname(__file__)
@@ -89,23 +87,23 @@ def saveChangeQGis(dlg):
         if i[0].isEnabled():
             contenu = contenu.replace(i[1], Qt.escape(i[0].text()))
         else:
-            contenu = contenu.replace(i[1], u"")
+            contenu = contenu.replace(i[1], "")
 
     # Change contenu checkbox
     for i in dlg.findChildren(QCheckBox):
         name = i.objectName()
         if i.isChecked():
-            contenu = contenu.replace(name, u"X")
+            contenu = contenu.replace(name, "X")
         else:
-            contenu = contenu.replace(name, u"")
+            contenu = contenu.replace(name, "")
 
     # Change contenu radio
     for i in dlg.findChildren(QRadioButton):
         name = i.objectName()
         if i.isChecked():
-            contenu = contenu.replace(name, u"X")
+            contenu = contenu.replace(name, "X")
         else:
-            contenu = contenu.replace(name, u"")
+            contenu = contenu.replace(name, "")
 
     # Change dateTime
     for i in dlg.findChildren(QDateTimeEdit):
@@ -131,11 +129,11 @@ def saveChangeQGis(dlg):
             contenu = contenu.replace("Minute" + name,
                                       str(time_obj.minute()).rjust(2, '0'))
         else:
-            contenu = contenu.replace("Jour"+name, u"")
-            contenu = contenu.replace("Mois"+name, u"")
-            contenu = contenu.replace("Annee"+name, u"")
-            contenu = contenu.replace("Heure"+name, u"")
-            contenu = contenu.replace("Minute"+name, u"")
+            contenu = contenu.replace("Jour"+name, "")
+            contenu = contenu.replace("Mois"+name, "")
+            contenu = contenu.replace("Annee"+name, "")
+            contenu = contenu.replace("Heure"+name, "")
+            contenu = contenu.replace("Minute"+name, "")
 
     # Change Menu
     for i in dlg.findChildren(QComboBox):
@@ -143,7 +141,7 @@ def saveChangeQGis(dlg):
         if i.isEnabled():
             contenu = contenu.replace(name, i.currentText())
         else:
-            contenu = contenu.replace(name, u"")
+            contenu = contenu.replace(name, "")
 
     n.write(contenu)
 
@@ -167,7 +165,7 @@ def saveChangeQGis(dlg):
 def formulaireQGis(titre, path):
     myMapRenderer = iface.mapCanvas().mapSettings()
     # Load template from file
-    myComposition = QgsLayout(myMapRenderer)
+    myComposition = QgsComposition(myMapRenderer)
     myTemplateFile = file(path, 'rt')
     myTemplateContent = myTemplateFile.read()
     myTemplateFile.close()
@@ -183,8 +181,8 @@ def formulaireQGis(titre, path):
     if QDir(out_dir).exists() is False or out_dir is None:
         out_dir = str(QDir.homePath())
 
-    out = os.path.join(out_dir, QSettings().value("/DICT/prefRecep", u"") +
-                       titre + QSettings().value("/DICT/sufRecep", u"") +
+    out = os.path.join(out_dir, QSettings().value("/DICT/prefRecep", "") +
+                       titre + QSettings().value("/DICT/sufRecep", "") +
                        ".pdf")
 
     printer.setOutputFileName(out)

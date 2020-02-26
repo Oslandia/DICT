@@ -7,7 +7,7 @@
                              -------------------
         begin                : 2015-08-19
         git sha              : $Format:%H$
-        copyright            : (C) 2015 by Loïc BARTOLETTI
+        copyright            : (C) 2015 by Loïc BARTOLETTI + some random trainee in 2019 who adapted the whole code in Py3 for free
         email                : lbartoletti@tuxfamily.org
  ***************************************************************************/
 
@@ -21,10 +21,9 @@
  ***************************************************************************/
 """
 
-from builtins import str
 import os
 
-from qgis.PyQt import QtWidgets, uic, QtCore
+from PyQt5 import uic, QtCore, QtWidgets
 from sys import platform as _platform
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
@@ -98,7 +97,7 @@ class DICTDialogConfig(QtWidgets.QDialog, FORM_CLASS):
 
         if QtCore.QSettings().value("/DICT/formPoppler") == "true":
             try:
-                import popplerqt4
+                import popplerqt5
                 self.radioQGisComposer.setChecked(False)
                 QtCore.QSettings().setValue("/DICT/formPoppler",
                                             self.radioQGisComposer.isChecked())
@@ -125,10 +124,10 @@ class DICTDialogConfig(QtWidgets.QDialog, FORM_CLASS):
     def showDialogConfig(self, obj, flags="Directory"):
         if flags == "Directory":
             fname = str(QtWidgets.QFileDialog.getExistingDirectory(
-                            self, u"Choisissez un répertoire :"))
+                            self, "Choisissez un répertoire :"))
         elif flags == "Executable":
             fname = str(QtWidgets.QFileDialog.getOpenFileName(
-                            self, u"Choisissez l'exécutable :"))
+                            self, "Choisissez l'exécutable :"))
         else:
             return
 
@@ -191,13 +190,13 @@ class DICTDialogConfig(QtWidgets.QDialog, FORM_CLASS):
 
         if self.radioPoppler.isChecked():
             try:
-                import popplerqt4
+                import popplerqt5
                 QtCore.QSettings().setValue("/DICT/formPoppler", True)
                 QtCore.QSettings().setValue("/DICT/formQGIS", False)
                 self.radioPoppler.setChecked(True)
             except:
-                txt = u"Poppler n'a pas été détecté sur votre système.\n"
-                txt += u"Le composeur QGis sera utilisé par défaut.\n"
+                txt = "Poppler n'a pas été détecté sur votre système.\n"
+                txt += "Le composeur QGis sera utilisé par défaut.\n"
 
                 QtWidgets.QMessageBox.warning(self,
                                           "Erreur de configuration poppler",

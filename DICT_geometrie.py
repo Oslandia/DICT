@@ -1,18 +1,16 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from __future__ import absolute_import
-from builtins import str
-from builtins import object
-from qgis.core import (QgsGeometry, QgsCoordinateTransform, QgsFeature,
-                       QgsFillSymbol, QgsVectorLayer, QgsProject)
+from qgis.core import *
+from qgis.gui import *
 from qgis.utils import iface
-from qgis.PyQt.QtCore import (QSizeF, QSettings, QDir, Qt)
-from qgis.PyQt.QtPrintSupport import QPrinter
-from qgis.PyQt.QtGui import QPainter
-from qgis.PyQt.QtWidgets import QMessageBox
+from PyQt5.QtCore import *
+from PyQt5.QtGui import QPainter
+from PyQt5.QtPrintSupport import QPrinter
+from PyQt5.QtWidgets import QMessageBox
 from .DICT_dialog_composer import DICTDialogComposer
 from math import ceil, pow
+import os
 
 
 class DICT_geometrie(object):
@@ -78,37 +76,9 @@ class DICT_geometrie(object):
             geom = self.__dictGeom2qgisGeom(g)
         elif version == 2:
             geom = self.__dictAltGeom2qgisGeom(g)
+        
 
         return geom
-
-    def __findScale(self, scale):
-        scales = [200, 250, 500, 750, 1000, 1500, 2000]
-        if scale in scales:
-            ind = scales.index(scale)
-            leng = len(scales)
-            if ind+1 == leng:
-                return scales[leng]+500
-            else:
-                return scales[ind+1]
-
-        scale = int(ceil(scale))
-        scales.append(scale)
-        scales.sort()
-        ind = scales.index(scale)
-        leng = len(scales)
-        if ind+1 == leng:
-            born = str(scale)[0:2]
-            puiss = pow(10, len(str(scale))-2)
-            hi = (int(born[0]) + 1) * 10
-            lo = (int(born[0]) * 10) + 5
-
-            rlo = lo - int(born)
-            if rlo < 0:
-                return hi * puiss
-            else:
-                return lo * puiss
-        else:
-            return scales[ind+1]
 
     def addGeometrie(self):
         vl = "Polygon?crs=epsg:" + self._epsg + "&index=yes"
@@ -127,19 +97,22 @@ class DICT_geometrie(object):
         mem_layer.renderer().setSymbol(QgsFillSymbol.createSimple(prop))
         QgsProject.instance().addMapLayer(mem_layer)
 
-        layerCRSSrsid = mem_layer.crs().srsid()
+        layerCRSSrsid = mem_layer.crs().authid()
         mc = iface.mapCanvas()
-        projectCRSSrsid = mc.mapSettings().destinationCrs().srsid()
+        projectCRSSrsid = mc.mapSettings().destinationCrs().authid()
 
         geomBB = self._geom
-        if layerCRSSrsid != projectCRSSrsid:
-            geomBB.transform(QgsCoordinateTransform(layerCRSSrsid,
-                                                    projectCRSSrsid))
+        sourceCrs = QgsCoordinateReferenceSystem(layerCRSSrsid)
+        destCrs = QgsCoordinateReferenceSystem(projectCRSSrsid)
+        tr = QgsCoordinateTransform(sourceCrs, destCrs, QgsProject.instance())
+        geomBB.transform(tr)
         self._geomBB = geomBB.boundingBox()
         mc.setExtent(self._geomBB)
+        mc.zoomScale(mc.scale() * 2)
+        
 
     def geometriePDF(self, titre, taillePlan):
-        # Afficher un assistant de saisie pour le choix du composeur
+        # Display layout list
         dlgConfigComposers = DICTDialogComposer(taillePlan)
         dlgConfigComposers.show()
         result = dlgConfigComposers.exec_()
@@ -148,46 +121,34 @@ class DICT_geometrie(object):
 
         if result:
             idx_plan = dlgConfigComposers.listComposers.selectedItems()
-            # id_plan = dlgConfigComposers.listComposers.currentRow()
         # Sortie du plan en PDF
-        composers = iface.activeComposers()
+            manager = QgsProject.instance().layoutManager()
 
         out = []
         if len(idx_plan) > 0:
 
-            for r in idx_plan:
-                id_plan = dlgConfigComposers.listComposers.row(r)
-                c = composers[id_plan].composition()
+            id_plan = dlgConfigComposers.listComposers.row(idx_plan[0])
+            layout_name = dlgConfigComposers.layout_listArray[id_plan]
+            layout = manager.layoutByName(layout_name)
 
-                # À configurer
-                c_map_lists = c.composerMapItems()
-                if(len(c_map_lists) == 0):
-                    return out
-                else:
-                    c_map = c_map_lists[0]
+            # Retrieve the layout's map Item 
+            mapItem = layout.itemById("carte_1")
+            mapItem.zoomToExtent(iface.mapCanvas().extent())
+            # Only mean to edit an existing item found so far is getting said item's ID
+            # there's the layoutItems() method to get the list of items from a layout 
+            # but as of now is exclusive to C++ plugins
 
-                if c_map:
-                    c_map.zoomToExtent(self._geomBB)
+            # Output
+            out_dir = QSettings().value("/DICT/configRep")
+            if QDir(out_dir).exists() is False or out_dir is None:
+                out_dir = str(QDir.homePath())
 
-                    # A faire correctement
-                    s = c_map.scale()
-                    scal = self.__findScale(s)
-                    iface.mapCanvas().zoomScale(scal)
-                    c_map.setNewScale(scal)
-                    c_map.updateCachedImage()
-                    c_map.renderModeUpdateCachedImage()
+            pdf = out_dir + "/" + \
+                QSettings().value("/DICT/prefPlan", "") + titre + \
+                QSettings().value("/DICT/sufPlan", "") + ".pdf"
 
-                    # Sortie
-                    out_dir = QSettings().value("/DICT/configRep")
-                    if QDir(out_dir).exists() is False or out_dir is None:
-                        out_dir = str(QDir.homePath())
-
-                    pdf = out_dir + "/" + \
-                        QSettings().value("/DICT/prefPlan", u"") + titre + \
-                        QSettings().value("/DICT/sufPlan", u"") + \
-                        str(id_plan) + ".pdf"
-
-                    c.exportAsPDF(pdf)
-                    out.append(pdf)
+            exported_layout = QgsLayoutExporter(layout)
+            exported_layout.exportToPdf(pdf, QgsLayoutExporter.PdfExportSettings())
+            out.append(pdf)
 
         return out

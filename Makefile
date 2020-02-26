@@ -55,9 +55,9 @@ UI_FILES = DICT_dialog_base.ui \
 
 EXTRAS = icon.png metadata.txt 
 
-COMPILED_RESOURCE_FILES = resources_rc.py
+COMPILED_RESOURCE_FILES = resources.py
 
-PEP8EXCLUDE=pydev,resources_rc.py,conf.py,third_party,ui
+PEP8EXCLUDE=pydev,resources.py,conf.py,third_party,ui
 
 
 #################################################
@@ -70,14 +70,21 @@ PLUGIN_UPLOAD = $(c)/plugin_upload.py
 
 RESOURCE_SRC=$(shell grep '^ *<file' resources.qrc | sed 's@</file>@@g;s/.*>//g' | tr '\n' ' ')
 
-QGISDIR=.qgis2
+PLUGIN_NAME=$(shell grep "^name" metadata.txt | cut -d'=' -f2)
+VERSION=$(shell grep "^version" metadata.txt | cut -d'=' -f2)
+ifeq ($(QGIS3_PROFILE),)
+QGIS3_PROFILE=default
+endif
+
+QGIS3_PATH=$(HOME)/.local/share/QGIS/QGIS3/profiles/$(QGIS3_PROFILE)/python/plugins/
+PLUGIN_PATH=$(QGIS3_PATH)$(PLUGIN_NAME)
 
 default: compile
 
 compile: $(COMPILED_RESOURCE_FILES)
 
-%_rc.py : %.qrc $(RESOURCES_SRC)
-	pyrcc4 -o $*_rc.py  $<
+%.py : %.qrc $(RESOURCES_SRC)
+	pyrcc5 -o $*.py  $<
 
 %.qm : %.ts
 	$(LRELEASE) $<
@@ -107,14 +114,13 @@ deploy: compile #doc
 	@echo "------------------------------------------"
 	# The deploy  target only works on unix like operating system where
 	# the Python plugin directory is located at:
-	# $HOME/$(QGISDIR)/python/plugins
-	mkdir -p $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-	cp -rvf $(PY_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-#	cp -rvf formulaire_pdf $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-	cp -vf $(UI_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-	cp -vf $(COMPILED_RESOURCE_FILES) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-	cp -vf $(EXTRAS) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
-#	cp -vfr $(HELP) $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)/help
+	mkdir -p $(PLUGIN_PATH)
+	cp -rvf $(PY_FILES) $(PLUGIN_PATH)
+#	cp -rvf formulaire_pdf $(PLUGIN_PATH)
+	cp -vf $(UI_FILES) $(PLUGIN_PATH)
+	cp -vf $(COMPILED_RESOURCE_FILES) $(PLUGIN_PATH)
+	cp -vf $(EXTRAS) $(PLUGIN_PATH)
+#	cp -vfr $(HELP) $(PLUGIN_PATH)/help
 
 # The dclean target removes compiled python files from plugin directory
 # also deletes any .git entry
@@ -123,8 +129,8 @@ dclean:
 	@echo "-----------------------------------"
 	@echo "Removing any compiled python files."
 	@echo "-----------------------------------"
-	find $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME) -iname "*.pyc" | xargs rm -f
-	find $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME) -iname ".git" -prune -exec rm -Rf {} \;
+	find $(PLUGIN_PATH) -iname "*.pyc" | xargs rm -f
+	find $(PLUGIN_PATH) -iname ".git" -prune -exec rm -Rf {} \;
 
 
 derase:
@@ -132,7 +138,7 @@ derase:
 	@echo "-------------------------"
 	@echo "Removing deployed plugin."
 	@echo "-------------------------"
-	rm -Rf $(HOME)/$(QGISDIR)/python/plugins/$(PLUGINNAME)
+	rm -Rf $(PLUGIN_PATH)
 
 zip: deploy dclean
 	@echo

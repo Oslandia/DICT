@@ -1,6 +1,6 @@
 <RCC>
-    <qresource prefix="/plugins/DICT" >
-        <file>icon.svg</file>
-	<file>icon_configuration.svg</file>
-    </qresource>
+  <qresource prefix="/plugins/DICT/">
+    <file>icon.png</file>
+    <file>config.png</file>
+  </qresource>
 </RCC>

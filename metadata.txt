@@ -1,27 +1,28 @@
-# This file contains metadata for your plugin. Since
-# version 2.0 of QGIS this is the proper way to supply
-# information about a plugin. The old method of
-# embedding metadata in __init__.py will
-# is no longer supported since version 2.0.
+; This file contains metadata for your plugin. Since 
+; version 2.0 of QGIS this is the proper way to supply 
+; information about a plugin. The old method of 
+; embedding metadata in __init__.py will 
+; is no longer supported since version 2.0.
 
-# This file should be included when you package your plugin.# Mandatory items:
+; This file should be included when you package your plugin.; Mandatory items:
 
 [general]
 name=DICT
-qgisMinimumVersion=3.4
-description=DICT
-version=0.1
+qgisMinimumVersion=3.0
+description=Assistant pour répondre au DT/DICT (French only / Français seulement)
+version=version 0.1
 author=Loïc BARTOLETTI
 email=lbartoletti@tuxfamily.org
+about=Le plugin permet de charger un XML d'une demande de DT/DICT pour exporter le plan à fournir avec le formulaire. Ce dernier est pré rempli par le plugin et se complète par un assistant reprennant le cerfa. Veuillez vous rendre sur la page du projet pour trouver la documentation.
 
-# End of mandatory metadata
+; End of mandatory metadata
 
-# Recommended items:
+; Recommended items:
 
-# Uncomment the following line and add your changelog:
-# changelog=
+; Uncomment the following line and add your changelog:
+; changelog=
 
-# Tags are comma separated with spaces allowed
+; Tags are comma separated with spaces allowed
 tags=DT,DICT,travaux,construire,france
 
 homepage=https://gitlab.com/lbartoletti/DICT
@@ -29,9 +30,9 @@ tracker=https://gitlab.com/lbartoletti/DICT/issues
 repository=https://gitlab.com/lbartoletti/DICT
 category=Plugins
 icon=icon.png
-# experimental flag
+; experimental flag
 experimental=True
 
-# deprecated flag (applies to the whole plugin, not just a single version)
+; deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False
 

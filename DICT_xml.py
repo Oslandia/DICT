@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-from __future__ import absolute_import
-from builtins import str
-from builtins import object
 from xml.dom import minidom
-from qgis.PyQt.QtCore import QSettings, Qt
-from qgis.PyQt.QtWidgets import QMessageBox
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import QMessageBox
 from .DICT_geometrie import DICT_geometrie
 from .DICT_dialog_wizard import DICTDialogWizard
 
@@ -43,23 +41,22 @@ class DICT_xml(object):
             msgBox.exec_()
             return
 
-        try:
-            # Dessine la géométrie
-            self.geom = DICT_geometrie(self._xmldoc, self._geom_tag,
-                                       self._gml_tag, self._gml_alt_tag)
-            self.geom.addGeometrie()
-        except:
-            msgBox.setText("Erreur lors de la génération de la géométrie.")
-            msgBox.exec_()
-            return
+        #try:
+        # Dessine la géométrie
+        self.geom = DICT_geometrie(self._xmldoc, self._geom_tag, self._gml_tag, self._gml_alt_tag)
+        self.geom.addGeometrie()
+        #except:
+        #    msgBox.setText("Erreur lors de la génération de la géométrie.")
+         #   msgBox.exec_()
+          #  return
 
     def __initTag(self):
-        rc_base = u'http://www.reseaux-et-canalisations.gouv.fr/' + \
-                  u'schema-teleservice/'
+        rc_base = 'http://www.reseaux-et-canalisations.gouv.fr/' + \
+                  'schema-teleservice/'
         rc1 = rc_base + '2.1'
         rc2 = rc_base + '2.2'
         rc3 = rc_base + '3.0'
-        gml = u'http://www.opengis.net/gml/3.2'
+        gml = 'http://www.opengis.net/gml/3.2'
 
         l = []
         for j in list(self._xmldoc.documentElement.attributes.items()):
@@ -71,7 +68,7 @@ class DICT_xml(object):
         elif rc2 in l:
             rc = rc2
         elif rc3 in l:
-            rc = rc3
+            rc = rc3        
 
         gml_index = l.index(gml)-1
         rc_index = l.index(rc)-1
@@ -138,13 +135,13 @@ class DICT_xml(object):
         # Numéro de consultation (soit normal soit à seize)
         recep_NumCons = self.__extraitAttr(dest, "noConsultationDuTeleservice")
         if len(recep_NumCons) == 0:
-            recep_NumCons =self.__extraitAttr(dest,
-                                          "noConsultationDuTeleserviceSeize")
-
+            recep_NumCons = self.__extraitAttr(dest, "noConsultationDuTeleserviceSeize")
         dico['NoGu'] = recep_NumCons
+
         # Numéro d'affaire
         recep_NumAff = self.__extraitAttr(dest, "noAffaireDeLexecutantDesTravaux")
         dico['NoAffaireDeclarant'] = recep_NumAff
+
         # Personne à contacter (déclarant)
         recep_RespProjet = self.__extraitAttr(dest, "nomDeLaPersonneAContacter")
         dico['Personne_Contacter'] = recep_RespProjet
@@ -156,9 +153,11 @@ class DICT_xml(object):
         dico['MoisReception'] = str(dateRecep.month).rjust(2, '0')
         dico['AnneeReception'] = str(dateRecep.year).rjust(4)
         dico['dateRecep'] = dateRecep
+
         # Commune principale
         recep_Commune = self.__extraitAttr(dest, "communePrincipale")
         dico['communePrincipale'] = recep_Commune
+
         # Adresse des travaux
         recep_Adresse = self.__extraitAttr(dest, "adresse")
         dico['AdresseTravaux'] = recep_Adresse

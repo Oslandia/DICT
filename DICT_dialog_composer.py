@@ -23,8 +23,9 @@
 
 import os
 
-from qgis.PyQt import QtWidgets, uic, QtCore
+from PyQt5 import uic, QtCore, QtWidgets
 from qgis.utils import iface
+from qgis.core import QgsLayoutManager, QgsProject
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'DICT_dialog_composer.ui'))
@@ -34,22 +35,25 @@ class DICTDialogComposer(QtWidgets.QDialog, FORM_CLASS):
     def __init__(self, taillePlan, parent=None):
         """Constructor."""
         super(DICTDialogComposer, self).__init__(parent)
-        # Set up the user interface from Designer.
-        # After setupUI you can access any designer object by doing
-        # self.<objectname>, and you can use autoconnect slots - see
-        # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
-        # #widgets-and-dialogs-with-auto-connect
+
         self.setupUi(self)
 
-        composers = iface.activeComposers()
-        compositions = [i.composerWindow().windowTitle() for i in
-                        iface.activeComposers()]
-        self.listComposers.addItems(compositions)
+
+        projectInstance = QgsProject.instance()
+        manager = projectInstance.layoutManager()
+        layouts_list = manager.printLayouts()
+        layout_listArray = []
+
+        for layout in layouts_list:
+            layout_listArray.append(layout.name())
+        self.layout_listArray = layout_listArray
+        self.listComposers.addItems(layout_listArray)
         self.listComposers.setSelectionMode(
                 QtWidgets.QAbstractItemView.ExtendedSelection)
+
         j = 0
-        for i in compositions:
+        for i in layout_listArray:
             if i.find(taillePlan) != -1:
                 self.listComposers.setCurrentRow(j)
-                # break
+                break
             j += 1
