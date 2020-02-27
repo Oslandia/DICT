@@ -187,276 +187,276 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
              self.Denomination,
              self.champs['dest_Denomination'],
              "dest_Denomination",
-             3
+             "Denomination"
              ],
             [
              self.ComplementAdresse,
              self.champs['dest_ComplementAdresse'],
              "dest_ComplementAdresse",
-             4
+             "ComplementAdresse"
             ],
             [
              self.NoVoie,
              self.champs['dest_NoVoie'],
              "dest_NoVoie",
-             5
+             "NoVoie"
             ],
             [
              self.LieuditBP,
              self.champs['dest_LieuditBP'],
              "dest_LieuditBP",
-             6
+             "LieuditBP"
             ],
             [
              self.CodePostal,
              self.champs['dest_CodePostal'],
              "dest_CodePostal",
-             7
+             "CodePostal"
             ],
             [
              self.Commune,
              self.champs['dest_Commune'],
              "dest_Commune",
-             8
+             "Commune"
             ],
             [
              self.Pays,
              self.champs['dest_Pays'],
              "dest_Pays",
-             9
+             "Pays"
             ],
             [
              self.NoGu,
              self.champs['NoGu'],
              "NoGu",
-             10
+             "NoGU"
             ],
             [
              self.ReferenceExploitant,
              self.champs['ReferenceExploitant'],
              "ReferenceExploitant",
-             11
+             "ReferenceExploitant"
             ],
             [
              self.NoAffaireDeclarant,
              self.champs['NoAffaireDeclarant'],
              "NoAffaireDeclarant",
-             12
+             "NoAffaireDeclarant"
             ],
             [
              self.Personne_Contacter,
              self.champs['Personne_Contacter'],
              "Personne_Contacter",
-             13
+             "Personne_Contacter"
             ],
             [
              self.CommuneTravaux,
              self.champs['communePrincipale'],
              "CommuneTravaux",
-             17
+             "CommuneTravaux"
             ],
             [
              self.AdresseTravaux,
              self.champs['AdresseTravaux'],
              "AdresseTravaux",
-             18
+             "AdresseTravaux"
             ],
             [
              self.RaisonSocialeExploitant,
              QSettings().value("/DICT/coordDenom"),
              "RaisonSocialeExploitant",
-             19
+             "RaisonSocialeExploitant"
             ],
             [
              self.ContactExploitant,
              QSettings().value("/DICT/coordPersonne"),
              "ContactExploitant",
-             20
+             "ContactExploitant"
             ],
             [
              self.NoVoieExploitant,
              QSettings().value("/DICT/coordNumVoie"),
              "NoVoieExploitant",
-             21
+             "NoVoieExploitant"
             ],
             [
              self.LieuditBPExploitant,
              QSettings().value("/DICT/coordBP"),
              "LieuditBPExploitant",
-             22
+             "LieuditBPExploitant"
             ],
             [
              self.CodePostalExploitant,
              QSettings().value("/DICT/coordCP"),
              "CodePostalExploitant",
-             23
+             "CodePostalExploitant"
             ],
             [
              self.CommuneExploitant,
              QSettings().value("/DICT/coordCommune"),
              "CommuneExploitant",
-             24
+             "CommuneExploitant"
             ],
             [
              self.TelExploitant,
              QSettings().value("/DICT/coordTel"),
              "TelExploitant",
-             25
+             "TelExploitant"
             ],
             [
              self.FaxExploitant,
              QSettings().value("/DICT/coordFax"),
              "FaxExploitant",
-             26
+             "FaxExploitant"
             ],
             [
              self.InfoPreciser,
              '',
              "InfoPreciser",
-             28
+             "InfoPreciser"
             ],
             [
              self.DistanceReseau,
              '',
              "DistanceReseau",
-             30
+             "DistanceReseau"
             ],
             [
              self.ModifPrevue,
              '',
              "ModifPrevue",
-             35
+             "ModifPrevue"
             ],
             [
              self.RepresentantExploitant,
              '',
              "RepresentantExploitant",
-             37
+             "RepresentantExploitant"
             ],
             [
              self.TelModification,
              '',
              "TelModification",
-             38
+             "TelModification"
             ],
             [
              self.Ref1,
              '',
              "Ref1",
-             40
+             "Ref1"
             ],
             [
              self.Ref2,
              '',
              "Ref2",
-             48
+             "Ref2"
             ],
             [
              self.Echelle1,
              '',
              "Echelle1",
-             41
+             "Echelle1"
             ],
             [
              self.Echelle2,
              '',
              "Echelle2",
-             49
+             "Echelle2"
             ],
             [
              self.Profondeur1,
              '',
              "Profondeur1",
-             46
+             "Profondeur1"
             ],
             [
              self.Profondeur2,
              '',
              "Profondeur2",
-             54
+             "Profondeur2"
             ],
             [
              self.Materiau1,
              '',
              "Materiau1",
-             47
+             "Materiau1"
             ],
             [
              self.Materiau2,
              '',
              "Materiau2",
-             55
+             "Materiau2"
             ],
             [
              self.Recommandations,
              '',
              "Recommandations",
-             70
+             "Recommandations"
             ],
             [
              self.RubriquesGuide,
              '',
              "RubriquesGuide",
-             71
+             "RubriquesGuide"
             ],
             [
              self.MesuresSecurite2,
              '',
              "MesuresSecurite2",
-             75
+             "MesuresSecurite2"
             ],
             [
              self.MesuresSecurite,
              '',
              "MesuresSecurite",
-             74
+             "MesuresSecurite"
             ],
             [
              self.TelEndommagement,
              QSettings().value("/DICT/TelEndommagement", ''),
              "TelEndommagement",
-             77
+             "TelEndommagement"
             ],
             [
              self.Endommagement,
              QSettings().value("/DICT/Endommagement", ''),
              "Endommagement",
-             78
+             "Endommagement"
             ],
             [
              self.NomResponsableDossier,
              QSettings().value("/DICT/respNom", ''),
              "NomResponsableDossier",
-             79
+             "NomResponsableDossier"
             ],
             [
              self.DesignationService,
              QSettings().value("/DICT/respService", ''),
              "DesignationService",
-             80
+             "DesignationService"
             ],
             [
              self.TelResponsableDossier,
              QSettings().value("/DICT/respTel", ''),
              "TelResponsableDossier",
-             81
+             "TelResponsableDossier"
             ],
             [
              self.NomSignataire,
              QSettings().value("/DICT/signNom", ''),
              "NomSignataire",
-             82
+             "NomSignataire"
             ],
             [
              self.NbPJ,
              '1',
              "NbPJ",
-             88
+             "NbPJ"
             ],
             [
              self.signSignataire,
              QSettings().value("/DICT/signSignature", ''),
-             "signSignataire"
+             "signSignataire",
              # n'est pas un champs dans le cerfa PDF
             ]
         ]
@@ -648,10 +648,10 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
 
         # Change contenu lignes
         for i in self.line:
-            if i[0].isEnabled():
-                id_f = findId(fields, i[0].objectName())
-                fields[id_f].setText(i[1])
-
+            if i[0].isEnabled() and len(i) == 4: # exception pour la signature
+                id_f = findId(fields, i[3])
+                if id_f != -1:
+                        fields[id_f].setText(i[1])
         # Change contenu checkbox
         for i in self.findChildren(QCheckBox):
             id_f = findId(fields, i.objectName())
