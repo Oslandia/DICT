@@ -76,7 +76,7 @@ class DICT_geometrie(object):
             geom = self.__dictGeom2qgisGeom(g)
         elif version == 2:
             geom = self.__dictAltGeom2qgisGeom(g)
-        
+
 
         return geom
 
@@ -109,7 +109,7 @@ class DICT_geometrie(object):
         self._geomBB = geomBB.boundingBox()
         mc.setExtent(self._geomBB)
         mc.zoomScale(mc.scale() * 2)
-        
+
 
     def geometriePDF(self, titre, taillePlan):
         # Display layout list
@@ -131,11 +131,11 @@ class DICT_geometrie(object):
             layout_name = dlgConfigComposers.layout_listArray[id_plan]
             layout = manager.layoutByName(layout_name)
 
-            # Retrieve the layout's map Item 
-            mapItem = layout.itemById("carte_1")
+            # Retrieve the layout's map Item
+            mapItem = layout.referenceMap()
             mapItem.zoomToExtent(iface.mapCanvas().extent())
             # Only mean to edit an existing item found so far is getting said item's ID
-            # there's the layoutItems() method to get the list of items from a layout 
+            # there's the layoutItems() method to get the list of items from a layout
             # but as of now is exclusive to C++ plugins
 
             # Output
