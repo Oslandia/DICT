@@ -7,7 +7,7 @@
                              -------------------
         begin                : 2015-08-19
         git sha              : $Format:%H$
-        copyright            : (C) 2015 by Loïc BARTOLETTI
+        copyright            : (C) 2015 by Loïc BARTOLETTI + some random trainee in 2019 who adapted the whole code in Py3 for free
         email                : lbartoletti@tuxfamily.org
  ***************************************************************************/
 
@@ -23,14 +23,14 @@
 
 import os
 
-from PyQt4 import QtGui, uic, QtCore
+from PyQt5 import uic, QtCore, QtWidgets
 from sys import platform as _platform
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
     os.path.dirname(__file__), 'DICT_dialog_config.ui'))
 
 
-class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
+class DICTDialogConfig(QtWidgets.QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
         super(DICTDialogConfig, self).__init__(parent)
@@ -97,7 +97,7 @@ class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
 
         if QtCore.QSettings().value("/DICT/formPoppler") == "true":
             try:
-                import popplerqt4
+                import popplerqt5
                 self.radioQGisComposer.setChecked(False)
                 QtCore.QSettings().setValue("/DICT/formPoppler",
                                             self.radioQGisComposer.isChecked())
@@ -114,20 +114,20 @@ class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
         self.toolButtonPDFTK.pressed.connect(
             lambda: self.showDialogConfig(self.configPDFTK, "Executable"))
 
-        self.okButton = self.button_box.button(QtGui.QDialogButtonBox.Ok)
+        self.okButton = self.button_box.button(QtWidgets.QDialogButtonBox.Ok)
         self.okButton.clicked.connect(self.accept)
 
         self.cancelButton = self.button_box.button(
-                                QtGui.QDialogButtonBox.Cancel)
+                                QtWidgets.QDialogButtonBox.Cancel)
         self.cancelButton.clicked.connect(self.close)
 
     def showDialogConfig(self, obj, flags="Directory"):
         if flags == "Directory":
-            fname = str(QtGui.QFileDialog.getExistingDirectory(
-                            self, u"Choisissez un répertoire :"))
+            fname = str(QtWidgets.QFileDialog.getExistingDirectory(
+                            self, "Choisissez un répertoire :"))
         elif flags == "Executable":
-            fname = str(QtGui.QFileDialog.getOpenFileName(
-                            self, u"Choisissez l'exécutable :"))
+            fname = str(QtWidgets.QFileDialog.getOpenFileName(
+                            self, "Choisissez l'exécutable :"))
         else:
             return
 
@@ -190,15 +190,15 @@ class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
 
         if self.radioPoppler.isChecked():
             try:
-                import popplerqt4
+                import popplerqt5
                 QtCore.QSettings().setValue("/DICT/formPoppler", True)
                 QtCore.QSettings().setValue("/DICT/formQGIS", False)
                 self.radioPoppler.setChecked(True)
             except:
-                txt = u"Poppler n'a pas été détecté sur votre système.\n"
-                txt += u"Le composeur QGis sera utilisé par défaut.\n"
+                txt = "Poppler n'a pas été détecté sur votre système.\n"
+                txt += "Le composeur QGis sera utilisé par défaut.\n"
 
-                QtGui.QMessageBox.warning(self,
+                QtWidgets.QMessageBox.warning(self,
                                           "Erreur de configuration poppler",
                                           txt)
 
@@ -212,4 +212,4 @@ class DICTDialogConfig(QtGui.QDialog, FORM_CLASS):
 
         self.close()
 
-        return QtGui.QDialog.Accepted
+        return QtWidgets.QDialog.Accepted

@@ -59,7 +59,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="NoGU"/>
+          <widget class="QLineEdit" name="NoGu"/>
          </item>
          <item row="1" column="0">
           <widget class="QLabel" name="label_8">
@@ -1568,7 +1568,7 @@ figure dans les plans.</string>
   <tabstop>CodePostal</tabstop>
   <tabstop>Commune</tabstop>
   <tabstop>Pays</tabstop>
-  <tabstop>NoGU</tabstop>
+  <tabstop>NoGu</tabstop>
   <tabstop>ReferenceExploitant</tabstop>
   <tabstop>NoAffaireDeclarant</tabstop>
   <tabstop>Personne_Contacter</tabstop>

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>555</width>
-    <height>848</height>
+    <height>1086</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
@@ -282,27 +282,6 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_13">
           <item>
-           <layout class="QGridLayout" name="gridLayout">
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_14">
-              <property name="text">
-               <string>Répertoire de sortie du plan et du formulaire :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLineEdit" name="configRep"/>
-            </item>
-            <item row="1" column="1">
-             <widget class="QToolButton" name="toolButton">
-              <property name="text">
-               <string>...</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
            <layout class="QGridLayout" name="gridLayout_2">
             <item row="0" column="0">
              <widget class="QLabel" name="label_18">
@@ -316,6 +295,27 @@
             </item>
             <item row="1" column="1">
              <widget class="QToolButton" name="toolButtonXML">
+              <property name="text">
+               <string>...</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+             <widget class="QLabel" name="label_14">
+              <property name="text">
+               <string>Répertoire de sortie du plan et du formulaire :</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLineEdit" name="configRep"/>
+            </item>
+            <item row="1" column="1">
+             <widget class="QToolButton" name="toolButton">
               <property name="text">
                <string>...</string>
               </property>
@@ -447,7 +447,7 @@
           <item>
            <widget class="QRadioButton" name="radioPoppler">
             <property name="text">
-             <string>Poppler (nécessite l'installation de pypoppler-Qt4 et de ses dépendances)</string>
+             <string>Poppler (nécessite l'installation de pypoppler-Qt5 et de ses dépendances)</string>
             </property>
            </widget>
           </item>
@@ -489,6 +489,29 @@
            </widget>
           </item>
          </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox_10">
+         <property name="title">
+          <string>Rappel</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+         <widget class="QLabel" name="label_19">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>30</y>
+            <width>491</width>
+            <height>91</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Afin d'assurer le fonctionnement de l'impression il est important de définir la &lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://docs.qgis.org/testing/en/docs/user_manual/print_composer/overview_composer.html#general-settings&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#ff85a6;&quot;&gt;cartee de référence&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;dans vos compositions pour pouvoir zoomer sur l'emprise des travaux.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
         </widget>
        </item>
       </layout>

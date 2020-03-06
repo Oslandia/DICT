@@ -1,14 +1,15 @@
+
 # -*- coding: utf-8 -*-
 """
 /***************************************************************************
- DICTDialog
+ DICTAbout
                                  A QGIS plugin
  DICT
                              -------------------
-        begin                : 2015-08-19
+        begin                : 2020-03-06
         git sha              : $Format:%H$
-        copyright            : (C) 2015 by Loïc BARTOLETTI
-        email                : lbartoletti@tuxfamily.org
+        copyright            : (C) 2020 by Loïc BARTOLETTI
+        email                : loic.bartoletti@oslandia.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -26,31 +27,21 @@ import os
 from PyQt5 import uic, QtCore, QtWidgets
 
 FORM_CLASS, _ = uic.loadUiType(os.path.join(
-    os.path.dirname(__file__), 'DICT_dialog_base.ui'))
+    os.path.dirname(__file__), 'DICT_about.ui'), resource_suffix='')
 
 
-class DICTDialog(QtWidgets.QDialog, FORM_CLASS):
+class DICTAbout(QtWidgets.QDialog, FORM_CLASS):
     def __init__(self, parent=None):
         """Constructor."""
-        super(DICTDialog, self).__init__(parent)
-        # Set up the user interface from Designer.
-        # After setupUI you can access any designer object by doing
-        # self.<objectname>, and you can use autoconnect slots - see
-        # http://qt-project.org/doc/qt-4.8/designer-using-a-ui-file.html
-        # #widgets-and-dialogs-with-auto-connect
+        super(DICTAbout, self).__init__(parent)
         self.setupUi(self)
 
-        self.toolButton.pressed.connect(self.showDialog)
+        self.rejected.connect(self.onReject)
+        self.buttonBox.rejected.connect(self.onReject)
+        self.buttonBox.accepted.connect(self.onAccept)
 
-    def showDialog(self):
+    def onAccept(self):
+        self.accept()
 
-        fname, _filter = QtWidgets.QFileDialog.getOpenFileName(
-                self, 'Open file',
-                QtCore.QSettings().value("/DICT/configRepXML" + QtCore.QDir.homePath()),
-                "fichier XML (*.xml *.XML)")
-
-        if fname:
-            f = open(fname, mode='r')
-
-            with f:
-                self.lineEdit.setText(fname)
+    def onReject(self):
+        self.close()

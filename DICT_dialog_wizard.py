@@ -22,13 +22,16 @@
 """
 import os
 
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
-from PyQt4.QtXml import *
-from PyQt4 import uic
+from PyQt5.QtWidgets import *
+from PyQt5.QtPrintSupport import *
+from PyQt5.QtGui import *
+from PyQt5.QtCore import *
+from PyQt5.QtXml import *
+from PyQt5 import uic
 from qgis.core import *
 from qgis.gui import *
 from qgis.utils import iface
+from xml.sax.saxutils import escape as escape
 
 import tempfile
 import shutil
@@ -37,7 +40,7 @@ import datetime
 import codecs
 
 try:
-    import popplerqt4
+    import popplerqt5
     POPPLER = True
 except:
     POPPLER = False
@@ -183,277 +186,277 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
             [
              self.Denomination,
              self.champs['dest_Denomination'],
-             u"dest_Denomination",
-             3
+             "dest_Denomination",
+             "Denomination"
              ],
             [
              self.ComplementAdresse,
              self.champs['dest_ComplementAdresse'],
-             u"dest_ComplementAdresse",
-             4
+             "dest_ComplementAdresse",
+             "ComplementAdresse"
             ],
             [
              self.NoVoie,
              self.champs['dest_NoVoie'],
-             u"dest_NoVoie",
-             5
+             "dest_NoVoie",
+             "NoVoie"
             ],
             [
              self.LieuditBP,
              self.champs['dest_LieuditBP'],
-             u"dest_LieuditBP",
-             6
+             "dest_LieuditBP",
+             "LieuditBP"
             ],
             [
              self.CodePostal,
              self.champs['dest_CodePostal'],
-             u"dest_CodePostal",
-             7
+             "dest_CodePostal",
+             "CodePostal"
             ],
             [
              self.Commune,
              self.champs['dest_Commune'],
-             u"dest_Commune",
-             8
+             "dest_Commune",
+             "Commune"
             ],
             [
              self.Pays,
              self.champs['dest_Pays'],
-             u"dest_Pays",
-             9
+             "dest_Pays",
+             "Pays"
             ],
             [
-             self.NoGU,
+             self.NoGu,
              self.champs['NoGu'],
-             u"NoGU",
-             10
+             "NoGu",
+             "NoGU"
             ],
             [
              self.ReferenceExploitant,
              self.champs['ReferenceExploitant'],
-             u"ReferenceExploitant",
-             11
+             "ReferenceExploitant",
+             "ReferenceExploitant"
             ],
             [
              self.NoAffaireDeclarant,
              self.champs['NoAffaireDeclarant'],
-             u"NoAffaireDeclarant",
-             12
+             "NoAffaireDeclarant",
+             "NoAffaireDeclarant"
             ],
             [
              self.Personne_Contacter,
              self.champs['Personne_Contacter'],
-             u"Personne_Contacter",
-             13
+             "Personne_Contacter",
+             "Personne_Contacter"
             ],
             [
              self.CommuneTravaux,
              self.champs['communePrincipale'],
-             u"CommuneTravaux",
-             17
+             "CommuneTravaux",
+             "CommuneTravaux"
             ],
             [
              self.AdresseTravaux,
              self.champs['AdresseTravaux'],
-             u"AdresseTravaux",
-             18
+             "AdresseTravaux",
+             "AdresseTravaux"
             ],
             [
              self.RaisonSocialeExploitant,
              QSettings().value("/DICT/coordDenom"),
-             u"RaisonSocialeExploitant",
-             19
+             "RaisonSocialeExploitant",
+             "RaisonSocialeExploitant"
             ],
             [
              self.ContactExploitant,
              QSettings().value("/DICT/coordPersonne"),
-             u"ContactExploitant",
-             20
+             "ContactExploitant",
+             "ContactExploitant"
             ],
             [
              self.NoVoieExploitant,
              QSettings().value("/DICT/coordNumVoie"),
-             u"NoVoieExploitant",
-             21
+             "NoVoieExploitant",
+             "NoVoieExploitant"
             ],
             [
              self.LieuditBPExploitant,
              QSettings().value("/DICT/coordBP"),
-             u"LieuditBPExploitant",
-             22
+             "LieuditBPExploitant",
+             "LieuditBPExploitant"
             ],
             [
              self.CodePostalExploitant,
              QSettings().value("/DICT/coordCP"),
-             u"CodePostalExploitant",
-             23
+             "CodePostalExploitant",
+             "CodePostalExploitant"
             ],
             [
              self.CommuneExploitant,
              QSettings().value("/DICT/coordCommune"),
-             u"CommuneExploitant",
-             24
+             "CommuneExploitant",
+             "CommuneExploitant"
             ],
             [
              self.TelExploitant,
              QSettings().value("/DICT/coordTel"),
-             u"TelExploitant",
-             25
+             "TelExploitant",
+             "TelExploitant"
             ],
             [
              self.FaxExploitant,
              QSettings().value("/DICT/coordFax"),
-             u"FaxExploitant",
-             26
+             "FaxExploitant",
+             "FaxExploitant"
             ],
             [
              self.InfoPreciser,
-             u'',
-             u"InfoPreciser",
-             28
+             '',
+             "InfoPreciser",
+             "InfoPreciser"
             ],
             [
              self.DistanceReseau,
-             u'',
-             u"DistanceReseau",
-             30
+             '',
+             "DistanceReseau",
+             "DistanceReseau"
             ],
             [
              self.ModifPrevue,
-             u'',
-             u"ModifPrevue",
-             35
+             '',
+             "ModifPrevue",
+             "ModifPrevue"
             ],
             [
              self.RepresentantExploitant,
-             u'',
-             u"RepresentantExploitant",
-             37
+             '',
+             "RepresentantExploitant",
+             "RepresentantExploitant"
             ],
             [
              self.TelModification,
-             u'',
-             u"TelModification",
-             38
+             '',
+             "TelModification",
+             "TelModification"
             ],
             [
              self.Ref1,
-             u'',
-             u"Ref1",
-             40
+             '',
+             "Ref1",
+             "Ref1"
             ],
             [
              self.Ref2,
-             u'',
-             u"Ref2",
-             48
+             '',
+             "Ref2",
+             "Ref2"
             ],
             [
              self.Echelle1,
-             u'',
-             u"Echelle1",
-             41
+             '',
+             "Echelle1",
+             "Echelle1"
             ],
             [
              self.Echelle2,
-             u'',
-             u"Echelle2",
-             49
+             '',
+             "Echelle2",
+             "Echelle2"
             ],
             [
              self.Profondeur1,
-             u'',
-             u"Profondeur1",
-             46
+             '',
+             "Profondeur1",
+             "Profondeur1"
             ],
             [
              self.Profondeur2,
-             u'',
-             u"Profondeur2",
-             54
+             '',
+             "Profondeur2",
+             "Profondeur2"
             ],
             [
              self.Materiau1,
-             u'',
-             u"Materiau1",
-             47
+             '',
+             "Materiau1",
+             "Materiau1"
             ],
             [
              self.Materiau2,
-             u'',
-             u"Materiau2",
-             55
+             '',
+             "Materiau2",
+             "Materiau2"
             ],
             [
              self.Recommandations,
-             u'',
-             u"Recommandations",
-             70
+             '',
+             "Recommandations",
+             "Recommandations"
             ],
             [
              self.RubriquesGuide,
-             u'',
-             u"RubriquesGuide",
-             71
+             '',
+             "RubriquesGuide",
+             "RubriquesGuide"
             ],
             [
              self.MesuresSecurite2,
-             u'',
-             u"MesuresSecurite2",
-             75
+             '',
+             "MesuresSecurite2",
+             "MesuresSecurite2"
             ],
             [
              self.MesuresSecurite,
-             u'',
-             u"MesuresSecurite",
-             74
+             '',
+             "MesuresSecurite",
+             "MesuresSecurite"
             ],
             [
              self.TelEndommagement,
-             QSettings().value("/DICT/TelEndommagement", u''),
-             u"TelEndommagement",
-             77
+             QSettings().value("/DICT/TelEndommagement", ''),
+             "TelEndommagement",
+             "TelEndommagement"
             ],
             [
              self.Endommagement,
-             QSettings().value("/DICT/Endommagement", u''),
-             u"Endommagement",
-             78
+             QSettings().value("/DICT/Endommagement", ''),
+             "Endommagement",
+             "Endommagement"
             ],
             [
              self.NomResponsableDossier,
-             QSettings().value("/DICT/respNom", u''),
-             u"NomResponsableDossier",
-             79
+             QSettings().value("/DICT/respNom", ''),
+             "NomResponsableDossier",
+             "NomResponsableDossier"
             ],
             [
              self.DesignationService,
-             QSettings().value("/DICT/respService", u''),
-             u"DesignationService",
-             80
+             QSettings().value("/DICT/respService", ''),
+             "DesignationService",
+             "DesignationService"
             ],
             [
              self.TelResponsableDossier,
-             QSettings().value("/DICT/respTel", u''),
-             u"TelResponsableDossier",
-             81
+             QSettings().value("/DICT/respTel", ''),
+             "TelResponsableDossier",
+             "TelResponsableDossier"
             ],
             [
              self.NomSignataire,
-             QSettings().value("/DICT/signNom", u''),
-             u"NomSignataire",
-             82
+             QSettings().value("/DICT/signNom", ''),
+             "NomSignataire",
+             "NomSignataire"
             ],
             [
              self.NbPJ,
-             u'1',
-             u"NbPJ",
-             88
+             '1',
+             "NbPJ",
+             "NbPJ"
             ],
             [
              self.signSignataire,
-             QSettings().value("/DICT/signSignature", u''),
-             u"signSignataire"
+             QSettings().value("/DICT/signSignature", ''),
+             "signSignataire",
              # n'est pas un champs dans le cerfa PDF
             ]
         ]
@@ -486,15 +489,16 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
 
     def saveChangeQGis(self):
         def formulaireQGis(titre, path):
-            myMapRenderer = iface.mapCanvas().mapSettings()
             # Load template from file
-            myComposition = QgsComposition(myMapRenderer)
-            myTemplateFile = file(path, 'rt')
+            p = QgsProject()
+            myLayout = QgsLayout(p)
+            myTemplateFile = open(path, 'rt')
             myTemplateContent = myTemplateFile.read()
             myTemplateFile.close()
             myDocument = QDomDocument()
             myDocument.setContent(myTemplateContent)
-            myComposition.loadFromTemplate(myDocument)
+            # adding to existing items
+            items, ok = myLayout.loadFromTemplate(myDocument,QgsReadWriteContext(), False)
 
             printer = QPrinter()
             printer.setOutputFormat(QPrinter.PdfFormat)
@@ -505,23 +509,22 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
                 out_dir = str(QDir.homePath())
 
             out = os.path.join(out_dir,
-                               QSettings().value("/DICT/prefRecep", u"") +
+                               QSettings().value("/DICT/prefRecep", "") +
                                titre +
-                               QSettings().value("/DICT/sufRecep", u"") +
+                               QSettings().value("/DICT/sufRecep", "") +
                                ".pdf")
 
             printer.setOutputFileName(out)
-            printer.setPaperSize(QSizeF(myComposition.paperWidth(),
-                                        myComposition.paperHeight()),
+            printer.setPaperSize(QSizeF(210,297), #format du formulaire.pdf actuellement utilisé en template, à changer si nécéssaire
                                  QPrinter.Millimeter)
             printer.setFullPage(True)
             printer.setColorMode(QPrinter.Color)
-            printer.setResolution(myComposition.printResolution())
+            printer.setResolution(300) #idem que ligne 517
 
             pdfPainter = QPainter(printer)
             paperRectMM = printer.pageRect(QPrinter.Millimeter)
             paperRectPixel = printer.pageRect(QPrinter.DevicePixel)
-            myComposition.render(pdfPainter, paperRectPixel, paperRectMM)
+            myLayout.render(pdfPainter, paperRectPixel, paperRectMM)
             pdfPainter.end()
 
             return out
@@ -543,25 +546,25 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
         # Change contenu lignes
         for i in self.line:
             if i[0].isEnabled():
-                contenu = contenu.replace(i[2], Qt.escape(i[0].text()))
+                contenu = contenu.replace(i[2], escape(i[0].text()))
             else:
-                contenu = contenu.replace(i[2], u"")
+                contenu = contenu.replace(i[2], "")
 
         # Change contenu checkbox
         for i in self.findChildren(QCheckBox):
             name = i.objectName()
             if i.isChecked():
-                contenu = contenu.replace(name, u"X")
+                contenu = contenu.replace(name, "X")
             else:
-                contenu = contenu.replace(name, u"")
+                contenu = contenu.replace(name, "")
 
         # Change contenu radio
         for i in self.findChildren(QRadioButton):
             name = i.objectName()
             if i.isChecked():
-                contenu = contenu.replace(name, u"X")
+                contenu = contenu.replace(name, "X")
             else:
-                contenu = contenu.replace(name, u"")
+                contenu = contenu.replace(name, "")
 
         # Change dateTime
         for i in self.findChildren(QDateTimeEdit):
@@ -587,11 +590,11 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
                 contenu = contenu.replace("Minute" + name,
                                           str(time_obj.minute()).rjust(2, '0'))
             else:
-                contenu = contenu.replace("Jour"+name, u"")
-                contenu = contenu.replace("Mois"+name, u"")
-                contenu = contenu.replace("Annee"+name, u"")
-                contenu = contenu.replace("Heure"+name, u"")
-                contenu = contenu.replace("Minute"+name, u"")
+                contenu = contenu.replace("Jour"+name, "")
+                contenu = contenu.replace("Mois"+name, "")
+                contenu = contenu.replace("Annee"+name, "")
+                contenu = contenu.replace("Heure"+name, "")
+                contenu = contenu.replace("Minute"+name, "")
 
         # Change Menu
         for i in self.findChildren(QComboBox):
@@ -599,7 +602,7 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
             if i.isEnabled():
                 contenu = contenu.replace(name, i.currentText())
             else:
-                contenu = contenu.replace(name, u"")
+                contenu = contenu.replace(name, "")
 
         n.write(contenu)
 
@@ -609,7 +612,7 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
         shutil.copy2(newfile, form)
 
         # A changer
-        titre = self.ReferenceExploitant.text()
+        titre = self.NoGu.text()
         pdf = formulaireQGis(titre, form)
 
         os.close(fdt)
@@ -627,14 +630,14 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
                     id_f = i
                     break
             return id_f
-
         if POPPLER is False:
             return None, None
 
         path = os.path.join(os.path.dirname(__file__), "formulaire_pdf")
-        formulaire = os.path.join(path, 'cerfa_14435-03.pdf')
+        formulaire = os.path.join(path, 'cerfa_14435-04.pdf')
 
-        doc = popplerqt4.Poppler.Document.load(formulaire)
+
+        doc = popplerqt5.Poppler.Document.load(formulaire)
 
         try:
             page = doc.page(0)
@@ -645,9 +648,10 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
 
         # Change contenu lignes
         for i in self.line:
-            if i[0].isEnabled():
-                fields[i[1]].setText(i[0].text())
-
+            if i[0].isEnabled() and len(i) == 4: # exception pour la signature
+                id_f = findId(fields, i[3])
+                if id_f != -1:
+                        fields[id_f].setText(i[1])
         # Change contenu checkbox
         for i in self.findChildren(QCheckBox):
             id_f = findId(fields, i.objectName())
@@ -746,13 +750,13 @@ class DICTDialogWizard(QDialog, FORM_CLASS):
         if QDir(out_dir).exists() is False or out_dir is None:
             out_dir = str(QDir.homePath())
 
-        out = os.path.join(out_dir, QSettings().value("/DICT/prefRecep", u"") +
-                           titre + QSettings().value("/DICT/sufRecep", u"") +
+        out = os.path.join(out_dir, QSettings().value("/DICT/prefRecep", "") +
+                           titre + QSettings().value("/DICT/sufRecep", "") +
                            ".pdf")
 
         pdf = doc.pdfConverter()
         pdf.setOutputFileName(out)
-        pdf.setPDFOptions(popplerqt4.Poppler.PDFConverter.WithChanges)
+        pdf.setPDFOptions(popplerqt5.Poppler.PDFConverter.WithChanges)
         pdf.convert()
 
         return titre, out

@@ -735,10 +735,10 @@
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
   </ComposerLabel>
-  <ComposerLabel valign="32" marginX="0" marginY="0" labelText="NoGU" htmlState="0" halign="1">
+  <ComposerLabel valign="32" marginX="0" marginY="0" labelText="NoGu" htmlState="0" halign="1">
    <LabelFont description="Arial,10,-1,5,50,0,0,0,0,0" style=""/>
    <FontColor red="0" blue="0" green="0"/>
-   <ComposerItem pagey="83.788" page="1" id="NoGU" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="54.88" y="83.788" visibility="1" zValue="114" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="46.592" outlineWidth="0.3" excludeFromExports="0" uuid="{553ac775-d735-48b6-952a-099c2b19c58f}" height="3.925" itemRotation="0" frame="false" pagex="54.88">
+   <ComposerItem pagey="83.788" page="1" id="NoGu" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="54.88" y="83.788" visibility="1" zValue="114" background="false" transparency="0" frameJoinStyle="miter" blendMode="0" width="46.592" outlineWidth="0.3" excludeFromExports="0" uuid="{553ac775-d735-48b6-952a-099c2b19c58f}" height="3.925" itemRotation="0" frame="false" pagex="54.88">
     <FrameColor alpha="255" red="0" blue="0" green="0"/>
     <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
    </ComposerItem>
