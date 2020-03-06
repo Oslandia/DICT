@@ -2,5 +2,8 @@
   <qresource prefix="/plugins/DICT/">
     <file>icon.png</file>
     <file>config.png</file>
+    <file>images/logo_oslandia.png</file>
+    <file>images/logo_megeve.jpg</file>
+    <file>images/logo_fdea.jpg</file>
   </qresource>
 </RCC>

@@ -22,13 +22,13 @@
 """
 from PyQt5.QtCore import (QSettings, QTranslator, qVersion,
                           QCoreApplication, QDir, QFileInfo,
-                          QFile, Qt)
-from PyQt5.QtWidgets import QAction, QMessageBox
-from PyQt5.QtGui import QIcon
+                          QFile, Qt, QUrl)
+from PyQt5.QtWidgets import QAction, QMessageBox, QDialog
+from PyQt5.QtGui import QIcon, QDesktopServices
 # Initialize Qt resources from file resources.py
-#from .resources_rc import *
 from . import resources
 # Import the code for the dialog
+from .DICT_about import DICTAbout
 from .DICT_dialog import DICTDialog
 from .DICT_dialog_config import DICTDialogConfig
 from .DICT_xml import DICT_xml
@@ -167,13 +167,13 @@ class DICT(object):
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
 
-        icon_configuration_path = ':/plugins/DICT/config.png'       
+        icon_configuration_path = ':/plugins/DICT/config.png'
         self.add_action(
             icon_configuration_path,
             text=self.tr('DICT configuration'),
             callback=self.runConfig,
             parent=self.iface.mainWindow())
-        
+
         icon_path = ':/plugins/DICT/icon.png'
         self.add_action(
             icon_path,
@@ -181,6 +181,24 @@ class DICT(object):
             callback=self.run,
             parent=self.iface.mainWindow())
 
+        self.add_action(
+            '',
+            text=self.tr('À propos'),
+            callback=self.runAbout,
+            parent=self.iface.mainWindow(),
+            add_to_toolbar=False)
+
+        self.add_action(
+            '',
+            text=self.tr('Aide'),
+            callback=self.runHelp,
+            parent=self.iface.mainWindow(),
+            add_to_toolbar=False)
+
+        firstUse = QSettings().value("DICT/isFirstUse" , 1, type=int)
+        if firstUse == 1:
+            QSettings().setValue("DICT/isFirstUse", 0)
+            self.runAbout()
 
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
@@ -257,6 +275,14 @@ class DICT(object):
         # See if OK was pressed
         if result:
             pass
+
+    def runAbout(self):
+        """ Run about dialog """
+        dialog = DICTAbout()
+        dialog.exec_()
+
+    def runHelp(self):
+        QDesktopServices.openUrl(QUrl("https://github.com/Oslandia/DICT"))
 
     def __checkPdftk(self, chemin):
         ret = -1

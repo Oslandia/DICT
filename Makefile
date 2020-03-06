@@ -40,6 +40,7 @@ PLUGINNAME = DICT
 PY_FILES = \
 	formulaire_pdf \
 	DICT.py \
+	DICT_about.py \
 	DICT_dialog.py \
 	DICT_dialog_config.py \
 	DICT_dialog_wizard.py \
@@ -51,9 +52,10 @@ PY_FILES = \
 UI_FILES = DICT_dialog_base.ui \
 		   DICT_dialog_config.ui \
 		   DICT_dialog_composer.ui \
-		   DICT_dialog_wizard.ui
+		   DICT_dialog_wizard.ui \
+			 DICT_about.ui
 
-EXTRAS = icon.png metadata.txt 
+EXTRAS = icon.png metadata.txt
 
 COMPILED_RESOURCE_FILES = resources.py
 
@@ -114,6 +116,7 @@ deploy: compile #doc
 	@echo "------------------------------------------"
 	# The deploy  target only works on unix like operating system where
 	# the Python plugin directory is located at:
+	rm -rf $(PLUGIN_PATH)
 	mkdir -p $(PLUGIN_PATH)
 	cp -rvf $(PY_FILES) $(PLUGIN_PATH)
 #	cp -rvf formulaire_pdf $(PLUGIN_PATH)
