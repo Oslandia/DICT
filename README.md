@@ -2,9 +2,13 @@
 
 Afin de répondre à certaines demandes en interne j'avais développé ce plugin QGis pour traiter les XML des DT/DICT.
 
-Le développement a été abandonnée, mais va reprendre si le financement le permet. C'est à ce jour la seule solution opensource existante sur le marché.
+Le développement a été abandonnée durant plusieurs années, mais a repris grâce à l'intérêt porté par de nombreuses sollicitations et le travail fournit par la FDEA.
 
-Pour toute demande vous pouvez me contacter par [mail](mailto:Loïc%20Bartoletti%20<loic.bartoletti@oslandia.com>?subject=[DICT]%20Demande%20pour%20le%20plugin).
+C'est à ce jour la seule solution opensource existante sur le marché.
+
+N'hésitez pas à nous contacter par [mail](mailto:infos@oslandia.com?subject=[DICT]%20Demande%20pour%20le%20plugin) si vous souhaitez faire évoluer ce plugin.
+
+Vous trouverez plus d'informations sur notre [page dédiée](https://oslandia.com/en/offre-qgis/plugin-de-reponse-aux-dict).
 
 # Utilisation
 
@@ -34,5 +38,5 @@ Après avoir rempli le formulaire, vous devez sélectionner le composeur pour l'
 
 ![Sélection du composeur et emprise du chantier](images/selection_composeur.png)
 
-Une fois le traitement effectué vous pouvez récupérez le formulaire pdf et les plans. Ils seront fusionnés si vous avez configuré cette option.
+Une fois le traitement effectué vous pouvez récupérer le formulaire pdf et les plans. Ils seront fusionnés si vous avez configuré cette option.
 
