@@ -46,7 +46,7 @@ class DICTDialog(QtWidgets.QDialog, FORM_CLASS):
 
         fname, _filter = QtWidgets.QFileDialog.getOpenFileName(
                 self, 'Open file',
-                QtCore.QSettings().value("/DICT/configRepXML" + QtCore.QDir.homePath()),
+                QtCore.QSettings().value("/DICT/configRepXML", QtCore.QDir.homePath()),
                 "fichier XML (*.xml *.XML)")
 
         if fname:

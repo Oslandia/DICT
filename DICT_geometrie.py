@@ -125,30 +125,36 @@ class DICT_geometrie(object):
             manager = QgsProject.instance().layoutManager()
 
         out = []
+        print(idx_plan)
         if len(idx_plan) > 0:
+            for i, idx in enumerate(idx_plan):
+                id_plan = dlgConfigComposers.listComposers.row(idx_plan[i])
+                layout_name = dlgConfigComposers.layout_listArray[id_plan]
+                layout = manager.layoutByName(layout_name)
 
-            id_plan = dlgConfigComposers.listComposers.row(idx_plan[0])
-            layout_name = dlgConfigComposers.layout_listArray[id_plan]
-            layout = manager.layoutByName(layout_name)
+                # Retrieve the layout's map Item
+                mapItem = layout.referenceMap()
+                mapItem.zoomToExtent(iface.mapCanvas().extent())
+                # Only mean to edit an existing item found so far is getting said item's ID
+                # there's the layoutItems() method to get the list of items from a layout
+                # but as of now is exclusive to C++ plugins
 
-            # Retrieve the layout's map Item
-            mapItem = layout.referenceMap()
-            mapItem.zoomToExtent(iface.mapCanvas().extent())
-            # Only mean to edit an existing item found so far is getting said item's ID
-            # there's the layoutItems() method to get the list of items from a layout
-            # but as of now is exclusive to C++ plugins
+                # Output
+                out_dir = QSettings().value("/DICT/configRep")
+                if QDir(out_dir).exists() is False or out_dir is None:
+                    out_dir = str(QDir.homePath())
 
-            # Output
-            out_dir = QSettings().value("/DICT/configRep")
-            if QDir(out_dir).exists() is False or out_dir is None:
-                out_dir = str(QDir.homePath())
+                pdf = os.path.join(out_dir,
+                    QSettings().value("/DICT/prefPlan", "") + titre + \
+                    QSettings().value("/DICT/sufPlan", "") + "_" + str(i) + ".pdf")
+                    
+                if QFile.exists(pdf):
+                    pdf = os.path.join(out_dir,
+                        QSettings().value("/DICT/prefPlan", "") + "plan_" + titre + \
+                        QSettings().value("/DICT/sufPlan", "") + "_" + str(i) + ".pdf")
 
-            pdf = out_dir + "/" + \
-                QSettings().value("/DICT/prefPlan", "") + titre + \
-                QSettings().value("/DICT/sufPlan", "") + ".pdf"
-
-            exported_layout = QgsLayoutExporter(layout)
-            exported_layout.exportToPdf(pdf, QgsLayoutExporter.PdfExportSettings())
-            out.append(pdf)
+                exported_layout = QgsLayoutExporter(layout)
+                exported_layout.exportToPdf(pdf, QgsLayoutExporter.PdfExportSettings())
+                out.append(pdf)
 
         return out

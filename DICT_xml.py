@@ -215,6 +215,7 @@ class DICT_xml(object):
                 titre, pdf = dlgWizard.saveChangeQGis()
 
             return titre, pdf
+        return None, None
 
     def geometriePDF(self, titre):
         return self.geom.geometriePDF(titre, self._taillePlan)

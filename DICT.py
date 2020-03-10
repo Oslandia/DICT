@@ -34,6 +34,9 @@ from .DICT_dialog_config import DICTDialogConfig
 from .DICT_xml import DICT_xml
 
 import os.path
+import sys
+import tempfile
+import subprocess
 
 
 class DICT(object):
@@ -220,10 +223,13 @@ class DICT(object):
         if result:
             msgBox = QMessageBox()
             msgBox.setTextFormat(Qt.RichText)
+            msgBox.children()[2].setOpenExternalLinks(True)
             dtdict = DICT_xml(self.dlg.lineEdit.text())
             # Prépare le formulaire
             titre, pdf = dtdict.formulaire()
-            try :
+            if titre is None:
+                return
+            try:
                 planPDF = dtdict.geometriePDF(titre)
             except :
                 msgBox.setText("Erreur lors de la création du plan, vérifiez si votre composition est correctement configurée")
@@ -235,7 +241,7 @@ class DICT(object):
                     pdf and len(planPDF) > 0:
                 out = QSettings().value("/DICT/configRep")
 
-                fusion = QSettings().value("/DICT/fusionPDF") == "true"
+                fusion = QSettings().value("/DICT/fusionPDF")
 
                 if(fusion and
                    self.__checkPdftk(QSettings().value("/DICT/configPDFTK"))):
@@ -246,21 +252,21 @@ class DICT(object):
                                     planPDF + ["cat", "output"] + [s])
 
                     msgBox.setText("Vous pouvez envoyer le fichier :" +
-                                   "<br><a href='file://" + s + "'>" +
-                                   s + "</a>")
+                                   "<br><a href='file:///" + s.replace('\\', '/') + "'>" +
+                                   s.replace('\\', '/') + "</a>")
 
                     os.remove(pdf)
                     for p in planPDF:
                         os.remove(p)
                 else:
                     msgBox.setText("Vous pouvez envoyer les fichiers :" +
-                                   "<br>Récepissé : " + pdf + "<br>" +
-                                   "Plans : " + str(planPDF) + "<br>")
+                                   "<br>Récepissé : <a href='file:///" + pdf.replace('\\', '/') + "'>" + pdf.replace('\\', '/')+ "</a><br>" +
+                                   "Plans : " + '<br>'.join(["<a href='file:///" + s.replace('\\', '/') + "'>" + s.replace('\\', '/') + "</a>" for s in planPDF]) + "<br>")
 
             else:
                 msgBox.setText("Erreur lors de la création des fichiers :\
-                \nRécepissé : "+pdf+"\n \
-                Plan : "+str(planPDF))
+                \nRécepissé : " + pdf.replace('\\', '/') + "\n \
+                Plan : "+ str([s.replace('\\', '/') for s in planPDF]) )
 
             msgBox.exec_()
 
@@ -297,14 +303,14 @@ class DICT(object):
                 proc.wait()
                 result = proc.returncode
                 txt = proc.stdout.read()
-                ret = txt.find("pdftk")
+                ret = txt.find(b"pdftk")
                 os.close(fd)
                 os.remove(err)
             else:
                 txt = subprocess.check_output(["/usr/local/bin/pdftk",
                                                "--version"])
                 ret = txt.find("pdftk")
-        except:
-            pass
+        except Exception as e:
+            print(e)
 
         return ret >= 0

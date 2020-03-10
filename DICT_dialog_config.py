@@ -78,24 +78,24 @@ class DICTDialogConfig(QtWidgets.QDialog, FORM_CLASS):
         self.sufPlan.setText(QtCore.QSettings().value("/DICT/sufPlan"))
         self.Endommagement.setText(QtCore.QSettings().value(
                                 "/DICT/Endommagement"))
-        if QtCore.QSettings().value("/DICT/casDT") == "true":
+        if QtCore.QSettings().value("/DICT/casDT"):
             self.casDT.setChecked(True)
         else:
             self.casDT.setChecked(False)
 
-        if QtCore.QSettings().value("/DICT/fusionPDF") == "true":
+        if QtCore.QSettings().value("/DICT/fusionPDF"):
             self.fusionPDF.setChecked(True)
         else:
             self.fusionPDF.setChecked(False)
 
-        if QtCore.QSettings().value("/DICT/formQGIS", "true") == "true":
+        if QtCore.QSettings().value("/DICT/formQGIS", True):
             self.radioQGisComposer.setChecked(True)
             QtCore.QSettings().setValue("/DICT/formPoppler",
                                         self.radioPoppler.isChecked())
         else:
             self.radioQGisComposer.setChecked(False)
 
-        if QtCore.QSettings().value("/DICT/formPoppler") == "true":
+        if QtCore.QSettings().value("/DICT/formPoppler"):
             try:
                 import popplerqt5
                 self.radioQGisComposer.setChecked(False)
@@ -123,11 +123,11 @@ class DICTDialogConfig(QtWidgets.QDialog, FORM_CLASS):
 
     def showDialogConfig(self, obj, flags="Directory"):
         if flags == "Directory":
-            fname = str(QtWidgets.QFileDialog.getExistingDirectory(
-                            self, "Choisissez un répertoire :"))
+            fname = QtWidgets.QFileDialog.getExistingDirectory(
+                            self, "Choisissez un répertoire :")
         elif flags == "Executable":
-            fname = str(QtWidgets.QFileDialog.getOpenFileName(
-                            self, "Choisissez l'exécutable :"))
+            fname, _ = QtWidgets.QFileDialog.getOpenFileName(
+                            self, "Choisissez l'exécutable :")
         else:
             return
 
