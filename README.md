@@ -2,9 +2,9 @@
 
 Afin de répondre à certaines demandes en interne j'avais développé ce plugin QGis pour traiter les XML des DT/DICT.
 
-Le développement a été abandonnée durant plusieurs années, mais a repris grâce à l'intérêt porté par de nombreuses sollicitations et le travail fournit par la FDEA.
+Le développement a été abandonnée durant plusieurs années, mais a repris grâce à l'intérêt porté par de nombreuses sollicitations et le travail fourni par la FDEA.
 
-C'est à ce jour la seule solution opensource existante sur le marché.
+C'est à ce jour **la seule solution open source existante** sur le marché.
 
 N'hésitez pas à nous contacter par [mail](mailto:infos@oslandia.com?subject=[DICT]%20Demande%20pour%20le%20plugin) si vous souhaitez faire évoluer ce plugin.
 
