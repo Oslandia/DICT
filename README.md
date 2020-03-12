@@ -12,7 +12,7 @@ Vous trouverez plus d'informations sur notre [page dédiée](https://oslandia.co
 
 # Utilisation
 
-L'outil est composé de deux bouttons : un pour traiter un XML (à gauche) ![icon](icon.png) et un pour configurer le plugin (à droite) ![icon_configuration](icon_configuration.png).
+L'outil est composé de deux bouttons : un pour traiter un XML (à gauche) <img src="icon.png"  width="32" height="32"> et un pour configurer le plugin (à droite) <img src="config.png"  width="32" height="32">.
 
 ## Configuration
 La configuration permet à l’utilisateur de ne pas avoir à répéter la saisie des informations et indiquer où et comment doivent sortir les PDF.
