@@ -125,7 +125,6 @@ class DICT_geometrie(object):
             manager = QgsProject.instance().layoutManager()
 
         out = []
-        print(idx_plan)
         if len(idx_plan) > 0:
             for i, idx in enumerate(idx_plan):
                 id_plan = dlgConfigComposers.listComposers.row(idx_plan[i])
@@ -147,7 +146,7 @@ class DICT_geometrie(object):
                 pdf = os.path.join(out_dir,
                     QSettings().value("/DICT/prefPlan", "") + titre + \
                     QSettings().value("/DICT/sufPlan", "") + "_" + str(i) + ".pdf")
-                    
+
                 if QFile.exists(pdf):
                     pdf = os.path.join(out_dir,
                         QSettings().value("/DICT/prefPlan", "") + "plan_" + titre + \

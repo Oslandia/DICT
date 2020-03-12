@@ -223,7 +223,6 @@ class DICT(object):
         if result:
             msgBox = QMessageBox()
             msgBox.setTextFormat(Qt.RichText)
-            msgBox.children()[2].setOpenExternalLinks(True)
             dtdict = DICT_xml(self.dlg.lineEdit.text())
             # Prépare le formulaire
             titre, pdf = dtdict.formulaire()
@@ -311,6 +310,9 @@ class DICT(object):
                                                "--version"])
                 ret = txt.find("pdftk")
         except Exception as e:
-            print(e)
+            msgBox = QMessageBox()
+            msgBox.setWindowTitle('Error with pdftk')
+            msgBox.setText(str(e))
+            msgBox.exec_()
 
         return ret >= 0
